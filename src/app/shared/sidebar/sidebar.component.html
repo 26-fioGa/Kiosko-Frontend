@@ -1,22 +1,5 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
-        <li class="nav-item nav-profile">
-            <a href="javascript:;" class="nav-link">
-                <div class="nav-profile-image">
-                    <img src="assets/images/faces/face1.jpg" alt="profile" />
-                </div>
-                <div class="nav-profile-text">
-                    <span class="font-weight-bold mb-2">David Grey. H</span>
-                </div>
-                <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
-            </a>
-        </li>
-        <li class="nav-item" [ngClass]="{ active: dashboard.isActive }">
-            <a class="nav-link" routerLink="/dashboard" routerLinkActive #dashboard="routerLinkActive">
-                <span class="menu-title">Dashboard</span>
-                <i class="mdi mdi-home menu-icon"></i>
-            </a>
-        </li>
         <li class="nav-item" [ngClass]="{
         active:
           accordions.isActive ||
@@ -78,12 +61,7 @@
                 </ul>
             </div>
         </li>
-        <li class="nav-item" [ngClass]="{ active: forms.isActive }">
-            <a class="nav-link" routerLink="forms/basic-elements" routerLinkActive #forms="routerLinkActive">
-                <span class="menu-title">Form elements</span>
-                <i class="mdi mdi-format-list-bulleted menu-icon"></i>
-            </a>
-        </li>
+
         <li class="nav-item">
             <a class="nav-link" (click)="uiBasicCollapsed = !uiBasicCollapsed" [attr.aria-expanded]="uiBasicCollapsed" aria-controls="ui-basic">
                 <span class="menu-title">Procesos</span>
@@ -93,39 +71,47 @@
             <div class="collapse" id="ui-basic" [ngbCollapse]="!uiBasicCollapsed">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="basic-ui/accordions" routerLinkActive="active" #accordions="routerLinkActive">Ventas</a>
+                        <a class="nav-link" routerLink="procesos/venta" routerLinkActive="active" #accordions="routerLinkActive">Ventas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="basic-ui/buttons" routerLinkActive="active" #buttons="routerLinkActive">Compras</a>
+                        <a class="nav-link" routerLink="procesos/compra" routerLinkActive="active" #buttons="routerLinkActive">Compras</a>
                     </li>
                 </ul>
             </div>
         </li>
         <li class="nav-item" [ngClass]="{ active: forms.isActive }">
-            <a class="nav-link" routerLink="forms/basic-elements" routerLinkActive #forms="routerLinkActive">
-                <span class="menu-title">Inventario</span>
+            <a class="nav-link" routerLink="clientes" routerLinkActive #forms="routerLinkActive">
+                <span class="menu-title">Clientes</span>
+                <i class="mdi mdi-account-switch menu-icon"></i>
+            </a>
+        </li>
+
+        <li class="nav-item" [ngClass]="{ active: forms.isActive }">
+            <a class="nav-link" routerLink="items" routerLinkActive #forms="routerLinkActive">
+                <span class="menu-title">Ítems</span>
                 <i class="mdi mdi-format-list-bulleted menu-icon"></i>
             </a>
         </li>
         <li class="nav-item" [ngClass]="{ active: forms.isActive }">
-            <a class="nav-link" routerLink="forms/basic-elements" routerLinkActive #forms="routerLinkActive">
+            <a class="nav-link" routerLink="proveedores" routerLinkActive #forms="routerLinkActive">
+                <span class="menu-title">Proveedores</span>
+                <i class="mdi mdi-truck menu-icon"></i>
+            </a>
+        </li>
+        <li class="nav-item" [ngClass]="{ active: forms.isActive }">
+            <a class="nav-link" routerLink="sucursales" routerLinkActive #forms="routerLinkActive">
                 <span class="menu-title">Sucursales</span>
                 <i class="mdi mdi-factory menu-icon"></i>
             </a>
         </li>
+
         <li class="nav-item" [ngClass]="{ active: forms.isActive }">
-            <a class="nav-link" routerLink="forms/basic-elements" routerLinkActive #forms="routerLinkActive">
-                <span class="menu-title">Proveedores</span>
-                <i class="mdi mdi-account-network  menu-icon"></i>
-            </a>
-        </li>
-        <li class="nav-item" [ngClass]="{ active: forms.isActive }">
-            <a class="nav-link" routerLink="forms/basic-elements" routerLinkActive #forms="routerLinkActive">
+            <a class="nav-link" routerLink="usuarios" routerLinkActive #forms="routerLinkActive">
                 <span class="menu-title">Usuarios</span>
                 <i class="mdi mdi-account-multiple menu-icon"></i>
             </a>
         </li>
-        <li class="nav-item" [ngClass]="{ active: charts.isActive }">
+        <!-- <li class="nav-item" [ngClass]="{ active: charts.isActive }">
             <a class="nav-link" routerLink="charts/chartjs" routerLinkActive #charts="routerLinkActive">
                 <span class="menu-title">Charts</span>
                 <i class="mdi mdi-chart-bar menu-icon"></i>
@@ -142,49 +128,6 @@
                 <span class="menu-title">Icons</span>
                 <i class="mdi mdi-contacts menu-icon"></i>
             </a>
-        </li>
-        <li class="nav-item" [ngClass]="{
-        active:
-          blankPage.isActive ||
-          login.isActive ||
-          register.isActive ||
-          error404.isActive ||
-          error500.isActive
-      }">
-            <a class="nav-link" (click)="samplePagesCollapsed = !samplePagesCollapsed" [attr.aria-expanded]="samplePagesCollapsed" aria-controls="auth">
-                <span class="menu-title">Sample Pages</span>
-                <i class="menu-arrow"></i>
-                <i class="mdi mdi-medical-bag menu-icon"></i>
-            </a>
-            <div class="collapse" id="auth" [ngbCollapse]="!samplePagesCollapsed">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="general-pages/blank-page" routerLinkActive="active" #blankPage="routerLinkActive">
-              Blank Page
-            </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="user-pages/login" routerLinkActive="active" #login="routerLinkActive">
-              Login
-            </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="user-pages/register" routerLinkActive="active" #register="routerLinkActive">
-              Register
-            </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="error-pages/404" routerLinkActive="active" #error404="routerLinkActive">
-              404
-            </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="error-pages/500" routerLinkActive="active" #error500="routerLinkActive">
-              500
-            </a>
-                    </li>
-                </ul>
-            </div>
-        </li>
+        </li> -->
     </ul>
 </nav>

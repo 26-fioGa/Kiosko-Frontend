@@ -1,0 +1,189 @@
+<div class="page-header">
+    <h2 class="page-title">USUARIOS</h2>
+</div>
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="row justify-content-between pl-3 pr-3">
+                    <h6>Usuarios Registrados</h6>
+                    <button type="button" class="btn btn-gradient-success btn-rounded btn-icon" (click)="openMediumModal(mediumModalContent)" title="Crear nuevo usuario">
+                        <i class="mdi mdi-plus"></i>
+                    </button>
+                    <!-- Inicio Modal -->
+                    <ng-template #mediumModalContent let-modal class="modal fade" id="exampleModal-2" aria-labelledby="exampleModalLabel-2">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel-2">Registrar nuevo usuario</h5>
+                                <button type="button" class="close" (click)="modal.dismiss()" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="forms-sample pl-3 pr-3">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label for="nomnbres">Nombres</label>
+                                                <input type="text" class="form-control" id="nombres">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="apellidos">Apellidos</label>
+                                                <input type="text" class="form-control" id="apellidos">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="username">Nombre de usuario</label>
+                                                <input type="text" class="form-control" id="username">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="password">Contraseña</label>
+                                                <input type="password" class="form-control" id="password">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label for="rol">Rol</label>
+                                                <input type="text" class="form-control" id="rol">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="telefono">Teléfono</label>
+                                                <input type="text" class="form-control" id="telefono">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="direccion">Dirección</label>
+                                                <input type="text" class="form-control" id="direccion">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="sucursal">Sucursal</label>
+                                                <input type="text" class="form-control" id="sucursal">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-main" (click)="modal.close()">Guardar</button>
+                                <button type="button" class="btn btn-light" (click)="modal.close()">Cancelar</button>
+                            </div>
+                        </div>
+
+                    </ng-template>
+                    <!-- Fin Modal -->
+                </div>
+                <hr>
+                <div class="table-responsive">
+                    <table class="table text-center">
+                        <thead>
+                            <tr>
+                                <th>Nombres</th>
+                                <th>Apellidos</th>
+                                <th>Rol</th>
+                                <th>Teléfono</th>
+                                <th>Dirección</th>
+                                <th>Sucursal</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Juan</td>
+                                <td>Torres</td>
+                                <td>vendedor</td>
+                                <td>982615693</td>
+                                <td>Av Cerquitos 512</td>
+                                <td>A</td>
+                                <td>
+                                    <div ngbDropdown>
+                                        <button type="button" class="btn btn-link btn-fw btn-rounded " id="dropdownMenuIconButton1" ngbDropdownToggle title="Acciones">
+                                            <i class="mdi mdi-dots-vertical"></i>
+                                        </button>
+                                        <div ngbDropdownMenu aria-labelledby="dropdownMenuIconButton1">
+                                            <a class="dropdown-item">Editar</a>
+                                            <a class="dropdown-item">Eliminar</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Juan</td>
+                                <td>Torres</td>
+                                <td>vendedor</td>
+                                <td>982615693</td>
+                                <td>Av Cerquitos 512</td>
+                                <td>A</td>
+                                <td>
+                                    <div ngbDropdown>
+                                        <button type="button" class="btn btn-link btn-fw btn-rounded btn-icon" id="dropdownMenuIconButton1" ngbDropdownToggle title="Acciones">
+                                            <i class="mdi mdi-dots-vertical"></i>
+                                        </button>
+                                        <div ngbDropdownMenu aria-labelledby="dropdownMenuIconButton1">
+                                            <a class="dropdown-item">Editar</a>
+                                            <a class="dropdown-item">Eliminar</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Juan</td>
+                                <td>Torres</td>
+                                <td>vendedor</td>
+                                <td>982615693</td>
+                                <td>Av Cerquitos 512</td>
+                                <td>A</td>
+                                <td>
+                                    <div ngbDropdown>
+                                        <button type="button" class="btn btn-link btn-fw btn-rounded btn-icon" id="dropdownMenuIconButton1" ngbDropdownToggle title="Acciones">
+                                            <i class="mdi mdi-dots-vertical"></i>
+                                        </button>
+                                        <div ngbDropdownMenu aria-labelledby="dropdownMenuIconButton1">
+                                            <a class="dropdown-item">Editar</a>
+                                            <a class="dropdown-item">Eliminar</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Juan</td>
+                                <td>Torres</td>
+                                <td>vendedor</td>
+                                <td>982615693</td>
+                                <td>Av Cerquitos 512</td>
+                                <td>A</td>
+                                <td>
+                                    <div ngbDropdown>
+                                        <button type="button" class="btn btn-link btn-fw btn-rounded btn-icon" id="dropdownMenuIconButton1" ngbDropdownToggle title="Acciones">
+                                            <i class="mdi mdi-dots-vertical"></i>
+                                        </button>
+                                        <div ngbDropdownMenu aria-labelledby="dropdownMenuIconButton1">
+                                            <a class="dropdown-item">Editar</a>
+                                            <a class="dropdown-item">Eliminar</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Juan</td>
+                                <td>Torres</td>
+                                <td>vendedor</td>
+                                <td>982615693</td>
+                                <td>Av Cerquitos 512</td>
+                                <td>A</td>
+                                <td>
+                                    <div ngbDropdown>
+                                        <button type="button" class="btn btn-link btn-fw btn-rounded btn-icon" id="dropdownMenuIconButton1" ngbDropdownToggle title="Acciones">
+                                            <i class="mdi mdi-dots-vertical"></i>
+                                        </button>
+                                        <div ngbDropdownMenu aria-labelledby="dropdownMenuIconButton1">
+                                            <a class="dropdown-item">Editar</a>
+                                            <a class="dropdown-item">Eliminar</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

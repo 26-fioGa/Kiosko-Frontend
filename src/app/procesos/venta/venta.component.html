@@ -1,0 +1,210 @@
+<div class="page-header">
+    <h2 class="page-title">VENTAS</h2>
+</div>
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="row d-flex pl-3 pr-3">
+                    <h6>Registrar Venta</h6>
+                    <div class="ml-auto">
+                        <button type="button" class="btn btn-gradient-primary btn-rounded btn-icon" title="Ver ventas">
+                            <i class="mdi mdi-point-of-sale"></i>
+                        </button>
+                    </div>
+
+                    <!-- Inicio Modal -->
+                    <ng-template #mediumModalContent let-modal class="modal fade" id="exampleModal-2" aria-labelledby="exampleModalLabel-2">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel-2">
+                                    Registrar nueva compra
+                                </h5>
+                                <button type="button" class="close" (click)="modal.dismiss()" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="forms-sample pl-3 pr-3">
+                                    <div class="form-group">
+                                        <label for="exampleInputUsername1">Producto</label>
+                                        <select id="exampleInputUsername1" class="form-control">
+                                            <option value="">Producto1</option>
+                                            <option value="">Producto2</option>
+                                            <option value="">Producto3</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Proveedor</label>
+                                        <select id="exampleInputEmail1" class="form-control">
+                                            <option value="">Proveedor1</option>
+                                            <option value="">Proveedor2</option>
+                                            <option value="">Proveedor3</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Sucursal</label>
+                                        <select id="exampleInputPassword1" class="form-control">
+                                            <option value="">Sucursal1</option>
+                                            <option value="">Sucursal2</option>
+                                            <option value="">Sucursal3</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputConfirmPassword1">Cantidad</label>
+                                        <input type="number" class="form-control" id="exampleInputConfirmPassword1" />
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" (click)="modal.close()">
+                                    Guardar
+                                </button>
+                                <button type="button" class="btn btn-light" (click)="modal.close()">
+                                    Cancelar
+                                </button>
+                            </div>
+                        </div>
+                    </ng-template>
+                    <!-- Fin Modal -->
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label for="exampleInputUsername1">Cliente</label>
+                            <select id="exampleInputUsername1" class="form-control">
+                                <option value="">Cliente1</option>
+                                <option value="">Cliente2</option>
+                                <option value="">Cliente3</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label for="exampleInputUsername1">Fecha</label>
+                            <input class="form-control" type="date" name="" id="exampleInputUsername1">
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label for="exampleInputUsername1">Sucursal</label>
+                            <select id="exampleInputUsername1" class="form-control">
+                                <option value="">Sucursal1</option>
+                                <option value="">Sucursal2</option>
+                                <option value="">Sucursal3</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row pl-3 pr-3">
+                    <div class="table-responsive">
+                        <table class="table text-center">
+                            <thead>
+                                <tr>
+                                    <th>Descripción</th>
+                                    <th>Cantidad</th>
+                                    <th>Precio Unitario</th>
+                                    <th>Precio Total</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <select class="form-control">
+                                                <option value="">Seleccione producto</option>
+                                                <option value="">Producto1</option>
+                                                <option value="">Producto2</option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <input class="form-control" type="number" name="" [defaultValue]="1">
+                                        </div>
+                                    </td>
+                                    <td>S/. 2.50</td>
+                                    <td>S/. 2.50</td>
+                                    <td>
+                                        <button type="button" class="btn btn-outline-danger btn-rounded btn-icon" id="dropdownMenuIconButton1" ngbDropdownToggle title="Acciones">
+                                            <i class="mdi mdi-close"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <select class="form-control">
+                                                <option value="">Seleccione producto</option>
+                                                <option value="">Producto1</option>
+                                                <option value="">Producto2</option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <input class="form-control" type="number" name="" [defaultValue]="1">
+                                        </div>
+                                    </td>
+                                    <td>S/. 2.50</td>
+                                    <td>S/. 2.50</td>
+                                    <td>
+                                        <button type="button" class="btn btn-outline-danger btn-rounded btn-icon" id="dropdownMenuIconButton1" ngbDropdownToggle title="Acciones">
+                                            <i class="mdi mdi-close"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <select class="form-control">
+                                                <option value="">Seleccione producto</option>
+                                                <option value="">Producto1</option>
+                                                <option value="">Producto2</option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <input class="form-control" type="number" name="" [defaultValue]="1">
+                                        </div>
+                                    </td>
+                                    <td>S/. 2.50</td>
+                                    <td>S/. 2.50</td>
+                                    <td>
+                                        <button type="button" class="btn btn-outline-danger btn-rounded btn-icon" id="dropdownMenuIconButton1" ngbDropdownToggle title="Acciones">
+                                            <i class="mdi mdi-close"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row pl-3 pr-3">
+                    <div class="col-lg-3">
+                        <button type="button" class="btn btn-gradient-success btn-rounded btn-icon-text">
+                            <i class="mdi mdi-plus btn-icon-prepend"></i>
+                            Añadir item
+                        </button>
+                    </div>
+                </div>
+                <div class="row d-flex p-3 mt-3 mb-3 mr-2 ml-2" style="background-color: #EEEEEE;">
+                    <p class="ml-auto">Total a pagar: S/. 7.50</p>
+                </div>
+                <div class="row d-flex pl-3 pr-3">
+                    <div class="ml-auto">
+                        <button type="button" class="btn btn-primary btn-icon-text">
+                            <i class="mdi mdi-point-of-sale btn-icon-prepend"></i>
+                            Finalizar Venta
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

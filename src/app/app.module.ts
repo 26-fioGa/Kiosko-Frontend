@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -16,10 +17,13 @@ import { TodoComponent } from './apps/todo-list/todo/todo.component';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { ContentAnimateDirective } from './shared/directives/content-animate.directive';
 import { TodoListComponent } from './apps/todo-list/todo-list.component';
-import { InventarioComponent } from './inventario/inventario.component';
-import { UsuariosComponent } from './usuarios/usuarios.component';
-import { ProveedoresComponent } from './proveedores/proveedores.component';
-import { PerfilComponent } from './perfil/perfil.component';
+import { ItemsComponent } from './components/items/items.component';
+import { UsuariosComponent } from './components/usuarios/usuarios.component';
+import { ProveedoresComponent } from './components/proveedores/proveedores.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
+import { ClientesComponent } from './components/clientes/clientes.component';
+import { SucursalesComponent } from './components/sucursales/sucursales.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -32,10 +36,13 @@ import { PerfilComponent } from './perfil/perfil.component';
     TodoComponent,
     SpinnerComponent,
     ContentAnimateDirective,
-    InventarioComponent,
+    ItemsComponent,
     UsuariosComponent,
     ProveedoresComponent,
-    PerfilComponent
+    PerfilComponent,
+    ClientesComponent,
+    SucursalesComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +51,8 @@ import { PerfilComponent } from './perfil/perfil.component';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    ChartsModule
+    ChartsModule,
+    HttpClientModule
   ],
   providers: [ThemeService],
   bootstrap: [AppComponent]

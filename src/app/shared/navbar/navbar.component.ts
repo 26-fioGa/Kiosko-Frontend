@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbDropdownConfig } from '@ng-bootstrap/ng-bootstrap';
-
+import { UsuariosService } from 'src/app/services/usuarios.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -10,12 +10,15 @@ import { NgbDropdownConfig } from '@ng-bootstrap/ng-bootstrap';
 export class NavbarComponent implements OnInit {
   public iconOnlyToggled = false;
   public sidebarToggled = false;
-  
-  constructor(config: NgbDropdownConfig) {
+  public username = "";
+
+  constructor(config: NgbDropdownConfig,  private usuarioService:UsuariosService) {
     config.placement = 'bottom-right';
   }
 
-  ngOnInit() {
+  ngOnInit():void {
+    this.username = "Daniel Paredes"
+
   }
 
   // toggle sidebar in small devices

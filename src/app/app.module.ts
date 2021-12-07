@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -24,7 +24,7 @@ import { PerfilComponent } from './components/perfil/perfil.component';
 import { ClientesComponent } from './components/clientes/clientes.component';
 import { SucursalesComponent } from './components/sucursales/sucursales.component';
 import { LoginComponent } from './components/login/login.component';
-
+import { TokenInterceptor } from './interceptors/token.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +54,7 @@ import { LoginComponent } from './components/login/login.component';
     ChartsModule,
     HttpClientModule
   ],
-  providers: [ThemeService],
+  providers: [ThemeService,{provide: HTTP_INTERCEPTORS,useClass: TokenInterceptor,multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

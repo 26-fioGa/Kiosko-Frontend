@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbDropdownConfig } from '@ng-bootstrap/ng-bootstrap';
 import { UsuariosService } from 'src/app/services/usuarios.service';
+
+import { Router } from '@angular/router';
+import { TokenService } from 'src/app/services/token.service';
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -12,15 +16,22 @@ export class NavbarComponent implements OnInit {
   public sidebarToggled = false;
   public username = "";
 
-  constructor(config: NgbDropdownConfig,  private usuarioService:UsuariosService) {
+  constructor(config: NgbDropdownConfig,  private usuarioService:UsuariosService,private tokenService: TokenService, private router: Router) {
     config.placement = 'bottom-right';
   }
 
   ngOnInit():void {
-    this.username = "Daniel Paredes"
+    this.usuarioService.getUsuarioLogeado().subscribe(usuario => {
+      this.username = usuario.username
+    })
 
   }
+cerrarSesion(){
+  this.tokenService.destroyToken()
+  this.router.navigateByUrl('/login');
+  
 
+}
   // toggle sidebar in small devices
   toggleOffcanvas() {
     document.querySelector('.sidebar-offcanvas').classList.toggle('active');

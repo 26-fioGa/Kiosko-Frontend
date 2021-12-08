@@ -4,6 +4,7 @@ import { environment } from "src/environments/environment";
 import { Usuario } from "../models/usuario.model";
 import { Observable } from "rxjs";
 import { TokenService } from 'src/app/services/token.service';
+import { map } from "rxjs/operators";
 
 @Injectable({
     providedIn: "root",
@@ -11,11 +12,33 @@ import { TokenService } from 'src/app/services/token.service';
   export class UsuariosService {
     private apiUrl = `${environment.API_URL}/api/users`;
     constructor(private http: HttpClient,private tokenService:TokenService) {}
-    getAll(){
-        return this.http.get<Usuario[]>(this.apiUrl);
+
+    getUsuarios(): Observable<Usuario[]>{
+        return this.http.get<Usuario[]>(this.apiUrl).pipe(map((response)=>response as Usuario[]))
     }
-    getUsuarioLogeado() {
+
+    getUsuarioLogeado(): Observable<Usuario> {
       
       return this.http.get<Usuario>(`${this.apiUrl}/${this.tokenService.getPayload().id}`);
+    }
+    createProveedor(usuario: Usuario): Observable<Usuario> {
+      // Después del post también se debe ingresar el tipo de objeto que retornará
+      return this.http.post<Usuario>(this.apiUrl, usuario);
+    }
+  
+    getProveedor(id: any): Observable<Usuario> {
+      return this.http.get<Usuario>(`${this.apiUrl}${id}`);
+    }
+  
+    updateProveedor(usuario: Usuario): Observable<Usuario> {
+      return this.http.put<Usuario>(
+        `${this.apiUrl}/${usuario._id}`,
+        usuario
+      
+      );
+    }
+  
+    deleteProveedor(id: string): Observable<Usuario> {
+      return this.http.delete<Usuario>(`${this.apiUrl}${id}`);
     }
   }

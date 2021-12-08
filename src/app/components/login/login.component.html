@@ -9,13 +9,15 @@
           Bienvenido, inicie sesión para ingresar
         </h6>
         <hr />
-        <form class="pt-3 text-left">
+        <form class="pt-3 text-left" (ngSubmit)="login()">
           <div class="form-group">
             <label for="email">Ingrese su correo electrónico</label>
             <input
               type="text"
               class="form-control form-control-lg"
               id="email"
+              name="email"
+              [(ngModel)]="usuario.email"
               placeholder="Ejemplo: admin@email.com"
             />
           </div>
@@ -25,17 +27,18 @@
               type="password"
               class="form-control form-control-lg"
               id="password"
+              name="password"
+              [(ngModel)]="usuario.password"
             />
           </div>
           <div class="mt-3">
             <button
-              type="button"
+              type="submit"
               class="
                 btn btn-block btn-main btn-lg
                 font-weight-medium
                 auth-form-btn
               "
-              (click)="login()"
             >
               Ingresar
             </button>

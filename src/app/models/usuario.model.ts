@@ -12,3 +12,11 @@ export interface Usuario {
   updatedAt: Date;
 }
 
+export class UsuarioLogin {
+
+  constructor(
+    public email: string,
+    public password: string,
+   
+) { }
+}

@@ -25,6 +25,7 @@ import { ClientesComponent } from './components/clientes/clientes.component';
 import { SucursalesComponent } from './components/sucursales/sucursales.component';
 import { LoginComponent } from './components/login/login.component';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+
 @NgModule({
   declarations: [
     AppComponent,

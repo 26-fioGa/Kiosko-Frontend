@@ -19,9 +19,9 @@ export class TokenService {
     const token = localStorage.getItem('token');
     const decoded = jwt_decode<Token>(token)
  return decoded;
-      
 
-    
   }
-
+  destroyToken(){
+    localStorage.removeItem('token')
+  }
 }

@@ -18,4 +18,5 @@ export class AuthService {
   profile(email: string, password: string) {
     return this.http.post<Auth>(`${this.apiUrl}/users`, { email, password });
   }
+ 
 }

@@ -7,16 +7,19 @@ import { ClientesComponent } from './components/clientes/clientes.component';
 import { SucursalesComponent } from './components/sucursales/sucursales.component';
 import { LoginComponent } from './components/login/login.component';
 import { ItemsComponent } from './components/items/items.component';
+import { AuthGuard } from './shared/guards/auth.guard';
+
 
 const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },
     { path: 'login', component: LoginComponent },
     // { path: 'dashboard', component: DashboardComponent },
-    { path: 'usuarios', component: UsuariosComponent },
-    { path: 'proveedores', component: ProveedoresComponent },
-    { path: 'clientes', component: ClientesComponent },
-    { path: 'sucursales', component: SucursalesComponent },
-    { path: 'items', component: ItemsComponent },
+    //6199cc15f67003035d912bb7 comon user
+    { path: 'usuarios', component: UsuariosComponent,canActivate:[AuthGuard],data: {roles:'6199cc15f67003035d912bb8'} },
+    { path: 'proveedores', component: ProveedoresComponent,canActivate:[AuthGuard],data: {roles:'6199cc15f67003035d912bb8'} },
+    { path: 'clientes', component: ClientesComponent,canActivate:[AuthGuard],data: {roles:'6199cc15f67003035d912bb8'}  },
+    { path: 'sucursales', component: SucursalesComponent,canActivate:[AuthGuard],data: {roles:'6199cc15f67003035d912bb8'}  },
+    { path: 'items', component: ItemsComponent,canActivate:[AuthGuard],data: {roles:'6199cc15f67003035d912bb8'} },
     {
         path: 'procesos',
         loadChildren: () =>

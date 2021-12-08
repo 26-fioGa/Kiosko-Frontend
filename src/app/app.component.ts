@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd, NavigationStart, RouteConfigLoadStart, RouteConfigLoadEnd } from '@angular/router';
 //import { AuthService } from './services/auth.service';
+import { UsuariosService } from './services/usuarios.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -65,4 +66,7 @@ export class AppComponent implements OnInit{
       window.scrollTo(0, 0);
     });
   }
+
+
+
 }

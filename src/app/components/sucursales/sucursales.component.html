@@ -1,140 +1,115 @@
 <div class="page-header">
-    <h2 class="page-title">SUCURSALES</h2>
+  <h2 class="page-title">SUCURSALES</h2>
 </div>
 <div class="row">
-    <div class="col-lg-12 grid-margin stretch-card">
-        <div class="card">
-            <div class="card-body">
-                <div class="row justify-content-between pl-3 pr-3">
-                    <h6>Sucursales Registradas</h6>
-                    <button type="button" class="btn btn-gradient-success btn-rounded btn-icon" (click)="openMediumModal(mediumModalContent)" title="Crear nueva sucursal">
-                        <i class="mdi mdi-plus"></i>
-                    </button>
-                    <!-- Inicio Modal -->
-                    <ng-template #mediumModalContent let-modal class="modal fade" id="exampleModal-2" aria-labelledby="exampleModalLabel-2">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel-2">
-                                    Registrar nueva sucursal
-                                </h5>
-                                <button type="button" class="close" (click)="modal.dismiss()" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form class="forms-sample pl-3 pr-3">
-                                    <div class="form-group">
-                                        <label for="nombre">Nombre</label>
-                                        <input type="text" class="form-control" id="nombre" />
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="nombre">Ubicación</label>
-                                        <input type="email" class="form-control" id="nombre" />
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-main" (click)="modal.close()">
-                                    Guardar
-                                </button>
-                                <button type="button" class="btn btn-light" (click)="modal.close()">
-                                    Cancelar
-                                </button>
-                            </div>
-                        </div>
-                    </ng-template>
-                    <!-- Fin Modal -->
-                </div>
-                <hr />
-                <div class="table-responsive">
-                    <table class="table text-center">
-                        <thead>
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Ubicación</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>CocaCola</td>
-                                <td>Los cerquitos 512, Los cerquitos 512</td>
-                                <td>
-                                    <div ngbDropdown>
-                                        <button type="button" class="btn btn-drop btn-link btn-fw btn-rounded btn-icon" id="dropdownMenuIconButton1" ngbDropdownToggle title="Acciones">
-                                            <i class="mdi mdi-dots-vertical"></i>
-                                        </button>
-                                        <div ngbDropdownMenu aria-labelledby="dropdownMenuIconButton1">
-                                            <a class="dropdown-item">Editar</a>
-                                            <a class="dropdown-item">Eliminar</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>CocaCola</td>
-                                <td>Los cerquitos 512, Los cerquitos 512</td>
-                                <td>
-                                    <div ngbDropdown>
-                                        <button type="button" class="btn btn-link btn-fw btn-rounded btn-icon" id="dropdownMenuIconButton1" ngbDropdownToggle title="Acciones">
-                                            <i class="mdi mdi-dots-vertical"></i>
-                                        </button>
-                                        <div ngbDropdownMenu aria-labelledby="dropdownMenuIconButton1">
-                                            <a class="dropdown-item">Editar</a>
-                                            <a class="dropdown-item">Eliminar</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>CocaCola</td>
-                                <td>Los cerquitos 512, Los cerquitos 512</td>
-                                <td>
-                                    <div ngbDropdown>
-                                        <button type="button" class="btn btn-link btn-fw btn-rounded btn-icon" id="dropdownMenuIconButton1" ngbDropdownToggle title="Acciones">
-                                            <i class="mdi mdi-dots-vertical"></i>
-                                        </button>
-                                        <div ngbDropdownMenu aria-labelledby="dropdownMenuIconButton1">
-                                            <a class="dropdown-item">Editar</a>
-                                            <a class="dropdown-item">Eliminar</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>CocaCola</td>
-                                <td>Los cerquitos 512, Los cerquitos 512</td>
-                                <td>
-                                    <div ngbDropdown>
-                                        <button type="button" class="btn btn-link btn-fw btn-rounded btn-icon" id="dropdownMenuIconButton1" ngbDropdownToggle title="Acciones">
-                                            <i class="mdi mdi-dots-vertical"></i>
-                                        </button>
-                                        <div ngbDropdownMenu aria-labelledby="dropdownMenuIconButton1">
-                                            <a class="dropdown-item">Editar</a>
-                                            <a class="dropdown-item">Eliminar</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>CocaCola</td>
-                                <td>Los cerquitos 512, Los cerquitos 512</td>
-                                <td>
-                                    <div ngbDropdown>
-                                        <button type="button" class="btn btn-link btn-fw btn-rounded btn-icon" id="dropdownMenuIconButton1" ngbDropdownToggle title="Acciones">
-                                            <i class="mdi mdi-dots-vertical"></i>
-                                        </button>
-                                        <div ngbDropdownMenu aria-labelledby="dropdownMenuIconButton1">
-                                            <a class="dropdown-item">Editar</a>
-                                            <a class="dropdown-item">Eliminar</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+  <div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <div class="row justify-content-between pl-3 pr-3">
+          <h6>Sucursales Registradas</h6>
+          <button
+            type="button"
+            class="btn btn-gradient-success btn-rounded btn-icon"
+            (click)="openMediumModal(mediumModalContent)"
+            title="Crear nueva sucursal"
+          >
+            <i class="mdi mdi-plus"></i>
+          </button>
+          <!-- Inicio Modal -->
+          <ng-template
+            #mediumModalContent
+            let-modal
+            class="modal fade"
+            id="exampleModal-2"
+            aria-labelledby="exampleModalLabel-2"
+          >
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel-2">
+                  Registrar nueva sucursal
+                </h5>
+                <button
+                  type="button"
+                  class="close"
+                  (click)="modal.dismiss()"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form class="forms-sample pl-3 pr-3" (ngSubmit)="create()">
+                  <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="nombre"
+                      [(ngModel)]="sucursalDTO.nombre"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="ubicacion">Ubicación</label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      name="ubicacion"
+                      [(ngModel)]="sucursalDTO.ubicacion"
+                    />
+                  </div>
+                  <button type="submit" class="btn btn-main">Guardar</button>
+                  <button
+                    type="button"
+                    class="btn btn-light"
+                    (click)="modal.close()"
+                  >
+                    Cancelar
+                  </button>
+                </form>
+              </div>
             </div>
+          </ng-template>
+          <!-- Fin Modal -->
         </div>
+        <hr />
+        <div class="table-responsive">
+          <table class="table text-center">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Ubicación</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let sucursal of sucursales">
+                <td>{{ sucursal.nombre }}</td>
+                <td>{{ sucursal.ubicacion }}</td>
+                <td>
+                  <div ngbDropdown>
+                    <button
+                      type="button"
+                      class="btn btn-drop btn-link btn-fw btn-rounded btn-icon"
+                      id="dropdownMenuIconButton1"
+                      ngbDropdownToggle
+                      title="Acciones"
+                    >
+                      <i class="mdi mdi-dots-vertical"></i>
+                    </button>
+                    <div
+                      ngbDropdownMenu
+                      aria-labelledby="dropdownMenuIconButton1"
+                    >
+                      <a class="dropdown-item">Editar</a>
+                      <a class="dropdown-item">Eliminar</a>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
+  </div>
 </div>

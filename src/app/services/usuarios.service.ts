@@ -21,7 +21,7 @@ import { map } from "rxjs/operators";
       
       return this.http.get<Usuario>(`${this.apiUrl}/${this.tokenService.getPayload().id}`);
     }
-    createProveedor(usuario: Usuario): Observable<Usuario> {
+    createUsuario(usuario: Usuario): Observable<Usuario> {
       // Después del post también se debe ingresar el tipo de objeto que retornará
       return this.http.post<Usuario>(this.apiUrl, usuario);
     }

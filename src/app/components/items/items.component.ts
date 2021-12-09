@@ -7,7 +7,6 @@ import { ArticulosService } from "../../services/articulos.service";
 @Component({
   selector: "app-inventario",
   templateUrl: "./items.component.html",
-  styleUrls: ["./items.component.scss"],
 })
 export class ItemsComponent implements OnInit {
   articulos: Articulo[] = [];

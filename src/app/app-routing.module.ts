@@ -13,7 +13,7 @@ import { AuthGuard } from './shared/guards/auth.guard';
 const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },
     { path: 'login', component: LoginComponent },
-    // { path: 'dashboard', component: DashboardComponent },
+    { path: 'dashboard', component: DashboardComponent },
     //6199cc15f67003035d912bb7 comon user
     { path: 'usuarios', component: UsuariosComponent,canActivate:[AuthGuard],data: {roles:'6199cc15f67003035d912bb8'} },
     { path: 'proveedores', component: ProveedoresComponent,canActivate:[AuthGuard],data: {roles:'6199cc15f67003035d912bb8'} },

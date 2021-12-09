@@ -48,6 +48,14 @@ export class ProveedoresComponent implements OnInit {
       );
     });
     this.getProveedores();
+    this.proveedor = {
+      nombre: "",
+      ruc: "",
+      direccion: "",
+      telefono: "",
+      email: "",
+      tiendaId: "",
+    };
   }
 
   cargarProveedor(_id): void {

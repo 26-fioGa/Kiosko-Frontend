@@ -1,133 +1,54 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
-        <li class="nav-item" [ngClass]="{
-        active:
-          accordions.isActive ||
-          buttons.isActive ||
-          badges.isActive ||
-          breadcrumbs.isActive ||
-          dropdowns.isActive ||
-          modals.isActive ||
-          notifications.isActive ||
-          progressbar.isActive ||
-          pagination.isActive ||
-          tabs.isActive ||
-          typography.isActive ||
-          tooltips.isActive
-      }">
-            <a class="nav-link" (click)="uiBasicCollapsed = !uiBasicCollapsed" [attr.aria-expanded]="uiBasicCollapsed" aria-controls="ui-basic">
-                <span class="menu-title">Basic UI Elements</span>
-                <i class="menu-arrow"></i>
-                <i class="mdi mdi-crosshairs-gps menu-icon"></i>
-            </a>
-            <div class="collapse" id="ui-basic" [ngbCollapse]="!uiBasicCollapsed">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="basic-ui/accordions" routerLinkActive="active" #accordions="routerLinkActive">Accordions</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="basic-ui/buttons" routerLinkActive="active" #buttons="routerLinkActive">Buttons</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="basic-ui/badges" routerLinkActive="active" #badges="routerLinkActive">Badges</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="basic-ui/breadcrumbs" routerLinkActive="active" #breadcrumbs="routerLinkActive">Breadcrumbs</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="basic-ui/dropdowns" routerLinkActive="active" #dropdowns="routerLinkActive">Dropdowns</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="basic-ui/modals" routerLinkActive="active" #modals="routerLinkActive">Modals</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="basic-ui/notifications" routerLinkActive="active" #notifications="routerLinkActive">Notifications</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="basic-ui/progressbar" routerLinkActive="active" #progressbar="routerLinkActive">Progress bar</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="basic-ui/pagination" routerLinkActive="active" #pagination="routerLinkActive">Pagination</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="basic-ui/tabs" routerLinkActive="active" #tabs="routerLinkActive">Tabs</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="basic-ui/typography" routerLinkActive="active" #typography="routerLinkActive">Typography</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="basic-ui/tooltips" routerLinkActive="active" #tooltips="routerLinkActive">Tooltips</a>
-                    </li>
-                </ul>
-            </div>
-        </li>
 
         <li class="nav-item">
             <a class="nav-link" (click)="uiBasicCollapsed = !uiBasicCollapsed" [attr.aria-expanded]="uiBasicCollapsed" aria-controls="ui-basic">
-                <span class="menu-title">Procesos</span>
+                <span class="menu-title">Venta</span>
                 <i class="menu-arrow"></i>
                 <i class="mdi mdi-vector-circle menu-icon"></i>
             </a>
             <div class="collapse" id="ui-basic" [ngbCollapse]="!uiBasicCollapsed">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="procesos/venta" routerLinkActive="active" #accordions="routerLinkActive">Ventas</a>
+                        <a class="nav-link" routerLink="procesos/venta" routerLinkActive="active" #nuevaVenta="routerLinkActive">Nueva Venta</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="procesos/compra" routerLinkActive="active" #buttons="routerLinkActive">Compras</a>
+                        <a class="nav-link" routerLink="procesos/compra" routerLinkActive="active" #ventaRealizada="routerLinkActive">Ventas Realizadas</a>
                     </li>
                 </ul>
             </div>
         </li>
-        <li class="nav-item" [ngClass]="{ active: forms.isActive }">
-            <a class="nav-link" routerLink="clientes" routerLinkActive #forms="routerLinkActive">
+        <li class="nav-item" [ngClass]="{ active: clientes.isActive }">
+            <a class="nav-link" routerLink="clientes" routerLinkActive #clientes="routerLinkActive">
                 <span class="menu-title">Clientes</span>
                 <i class="mdi mdi-account-switch menu-icon"></i>
             </a>
         </li>
 
-        <li class="nav-item" [ngClass]="{ active: forms.isActive }">
-            <a class="nav-link" routerLink="items" routerLinkActive #forms="routerLinkActive">
-                <span class="menu-title">Ítems</span>
+        <li class="nav-item" [ngClass]="{ active: articulos.isActive }">
+            <a class="nav-link" routerLink="items" routerLinkActive #articulos="routerLinkActive">
+                <span class="menu-title">Artículos</span>
                 <i class="mdi mdi-format-list-bulleted menu-icon"></i>
             </a>
         </li>
-        <li class="nav-item" [ngClass]="{ active: forms.isActive }">
-            <a class="nav-link" routerLink="proveedores" routerLinkActive #forms="routerLinkActive">
+        <li class="nav-item" [ngClass]="{ active: proveedores.isActive }">
+            <a class="nav-link" routerLink="proveedores" routerLinkActive #proveedores="routerLinkActive">
                 <span class="menu-title">Proveedores</span>
                 <i class="mdi mdi-truck menu-icon"></i>
             </a>
         </li>
-        <li class="nav-item" [ngClass]="{ active: forms.isActive }">
-            <a class="nav-link" routerLink="sucursales" routerLinkActive #forms="routerLinkActive">
+        <li class="nav-item" [ngClass]="{ active: sucursales.isActive }">
+            <a class="nav-link" routerLink="sucursales" routerLinkActive #sucursales="routerLinkActive">
                 <span class="menu-title">Sucursales</span>
                 <i class="mdi mdi-factory menu-icon"></i>
             </a>
         </li>
 
-        <li class="nav-item" [ngClass]="{ active: forms.isActive }">
-            <a class="nav-link" routerLink="usuarios" routerLinkActive #forms="routerLinkActive">
+        <li class="nav-item" [ngClass]="{ active: usuarios.isActive }">
+            <a class="nav-link" routerLink="usuarios" routerLinkActive #usuarios="routerLinkActive">
                 <span class="menu-title">Usuarios</span>
                 <i class="mdi mdi-account-multiple menu-icon"></i>
             </a>
         </li>
-        <!-- <li class="nav-item" [ngClass]="{ active: charts.isActive }">
-            <a class="nav-link" routerLink="charts/chartjs" routerLinkActive #charts="routerLinkActive">
-                <span class="menu-title">Charts</span>
-                <i class="mdi mdi-chart-bar menu-icon"></i>
-            </a>
-        </li>
-        <li class="nav-item" [ngClass]="{ active: tables.isActive }">
-            <a class="nav-link" routerLink="tables/basic-table" routerLinkActive #tables="routerLinkActive">
-                <span class="menu-title">Tables</span>
-                <i class="mdi mdi-table-large menu-icon"></i>
-            </a>
-        </li>
-        <li class="nav-item" [ngClass]="{ active: icons.isActive }">
-            <a class="nav-link" routerLink="icons/mdi" routerLinkActive #icons="routerLinkActive">
-                <span class="menu-title">Icons</span>
-                <i class="mdi mdi-contacts menu-icon"></i>
-            </a>
-        </li> -->
     </ul>
 </nav>

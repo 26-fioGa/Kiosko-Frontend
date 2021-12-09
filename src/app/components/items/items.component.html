@@ -15,7 +15,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel-2">
-                                    Registrar nuevo proveedor
+                                    Artículo
                                 </h5>
                                 <button type="button" class="close" (click)="modal.dismiss()" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
@@ -27,42 +27,42 @@
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label for="nombre">Nombre</label>
-                                                <input type="text" class="form-control" id="nombre" />
+                                                <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="articulo.nombre" />
                                             </div>
                                             <div class="form-group">
                                                 <label for="descripcion">Descripción</label>
-                                                <input type="text" class="form-control" id="descripcion" />
+                                                <input type="text" class="form-control" id="descripcion" name="descripcion" [(ngModel)]="articulo.descripcion" />
                                             </div>
                                             <div class="form-group">
                                                 <label for="cantidad">Cantidad</label>
-                                                <input type="email" class="form-control" id="cantidad" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="costoVenta">Costo Venta</label>
-                                                <input type="text" class="form-control" id="costoVenta" />
+                                                <input type="email" class="form-control" id="cantidad" name="cantidad" [(ngModel)]="articulo.cantidad" />
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
+                                                <label for="costoVenta">Costo Venta</label>
+                                                <input type="text" class="form-control" id="costoVenta" name="costoVenta" [(ngModel)]="articulo.costoVenta" />
+                                            </div>
+                                            <div class="form-group">
                                                 <label for="costoCompra">Costo Compra</label>
-                                                <input type="text" class="form-control" id="costoCompra" />
+                                                <input type="text" class="form-control" id="costoCompra" name="costoCompra" [(ngModel)]="articulo.costoCompra" />
                                             </div>
                                             <div class="form-group">
                                                 <label for="perecero">Perecero</label>
-                                                <input type="text" class="form-control" id="perecero" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="sucursal">Sucursal</label>
-                                                <input type="text" class="form-control" id="sucursal" />
+                                                <input type="date" class="form-control" id="perecero" name="perecero" [(ngModel)]="articulo.perecero" />
                                             </div>
                                         </div>
                                     </div>
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-main" (click)="modal.close()">
-                                    Guardar
+                                <button type="button" class="btn btn-main" *ngIf="articulo._id else elseBlock" (click)="modal.close(); update()">
+                                    Guardar Cambios
                                 </button>
+                                <ng-template #elseBlock>
+                                    <button type="submit" class="btn btn-main" (click)="modal.close(); create()">Crear
+                                        Artículo</button>
+                                </ng-template>
                                 <button type="button" class="btn btn-light" (click)="modal.close()">
                                     Cancelar
                                 </button>
@@ -77,106 +77,30 @@
                         <thead>
                             <tr>
                                 <th>Nombre</th>
+                                <th>Descripción</th>
                                 <th>Cantidad</th>
                                 <th>Costo Venta</th>
                                 <th>Costo Compra</th>
                                 <th>Perecero</th>
-                                <th>Descripción</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>CocaCola</td>
-                                <td>Los cerquitos 512</td>
-                                <td>054-984562</td>
-                                <td>054-984562</td>
-                                <td>054-984562</td>
-                                <td>contact@cocacola.com</td>
+                            <tr *ngFor="let articulo of articulos">
+                                <td>{{articulo.nombre}}</td>
+                                <td>{{articulo.descripcion}}</td>
+                                <td>{{articulo.cantidad}}</td>
+                                <td>{{articulo.costoVenta}}</td>
+                                <td>{{articulo.costoCompra}}</td>
+                                <td>{{articulo.perecero}}</td>
                                 <td>
                                     <div ngbDropdown>
                                         <button type="button" class="btn btn-link btn-fw btn-rounded btn-icon" id="dropdownMenuIconButton1" ngbDropdownToggle title="Acciones">
                                             <i class="mdi mdi-dots-vertical"></i>
                                         </button>
                                         <div ngbDropdownMenu aria-labelledby="dropdownMenuIconButton1">
-                                            <a class="dropdown-item">Editar</a>
-                                            <a class="dropdown-item">Eliminar</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>CocaCola</td>
-                                <td>Los cerquitos 512</td>
-                                <td>054-984562</td>
-                                <td>054-984562</td>
-                                <td>054-984562</td>
-                                <td>contact@cocacola.com</td>
-                                <td>
-                                    <div ngbDropdown>
-                                        <button type="button" class="btn btn-link btn-fw btn-rounded btn-icon" id="dropdownMenuIconButton1" ngbDropdownToggle title="Acciones">
-                                            <i class="mdi mdi-dots-vertical"></i>
-                                        </button>
-                                        <div ngbDropdownMenu aria-labelledby="dropdownMenuIconButton1">
-                                            <a class="dropdown-item">Editar</a>
-                                            <a class="dropdown-item">Eliminar</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>CocaCola</td>
-                                <td>Los cerquitos 512</td>
-                                <td>054-984562</td>
-                                <td>054-984562</td>
-                                <td>054-984562</td>
-                                <td>contact@cocacola.com</td>
-                                <td>
-                                    <div ngbDropdown>
-                                        <button type="button" class="btn btn-link btn-fw btn-rounded btn-icon" id="dropdownMenuIconButton1" ngbDropdownToggle title="Acciones">
-                                            <i class="mdi mdi-dots-vertical"></i>
-                                        </button>
-                                        <div ngbDropdownMenu aria-labelledby="dropdownMenuIconButton1">
-                                            <a class="dropdown-item">Editar</a>
-                                            <a class="dropdown-item">Eliminar</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>CocaCola</td>
-                                <td>Los cerquitos 512</td>
-                                <td>054-984562</td>
-                                <td>054-984562</td>
-                                <td>054-984562</td>
-                                <td>contact@cocacola.com</td>
-                                <td>
-                                    <div ngbDropdown>
-                                        <button type="button" class="btn btn-link btn-fw btn-rounded btn-icon" id="dropdownMenuIconButton1" ngbDropdownToggle title="Acciones">
-                                            <i class="mdi mdi-dots-vertical"></i>
-                                        </button>
-                                        <div ngbDropdownMenu aria-labelledby="dropdownMenuIconButton1">
-                                            <a class="dropdown-item">Editar</a>
-                                            <a class="dropdown-item">Eliminar</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>CocaCola</td>
-                                <td>Los cerquitos 512</td>
-                                <td>054-984562</td>
-                                <td>054-984562</td>
-                                <td>054-984562</td>
-                                <td>contact@cocacola.com</td>
-                                <td>
-                                    <div ngbDropdown>
-                                        <button type="button" class="btn btn-link btn-fw btn-rounded btn-icon" id="dropdownMenuIconButton1" ngbDropdownToggle title="Acciones">
-                                            <i class="mdi mdi-dots-vertical"></i>
-                                        </button>
-                                        <div ngbDropdownMenu aria-labelledby="dropdownMenuIconButton1">
-                                            <a class="dropdown-item">Editar</a>
-                                            <a class="dropdown-item">Eliminar</a>
+                                            <a class="dropdown-item" (click)="cargarArticulo(articulo._id)" (click)="openMediumModal(mediumModalContent)">Editar</a>
+                                            <a class="dropdown-item" (click)="delete(articulo)">Eliminar</a>
                                         </div>
                                     </div>
                                 </td>

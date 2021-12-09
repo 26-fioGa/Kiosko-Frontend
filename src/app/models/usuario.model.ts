@@ -2,6 +2,7 @@ export interface Usuario {
   _id: string;
   username: string;
   email: string;
+  password: string;
   direccion: string;
   telefono: string;
   nombre: string;

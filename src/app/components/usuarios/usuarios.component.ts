@@ -31,7 +31,7 @@ export class UsuariosComponent implements OnInit {
 
   create(): void {
     this.usuarioService
-      .createProveedor(this.usuario)
+      .createUsuario(this.usuario)
       .subscribe((usuario) => {
         swal.fire(
           "¡Proveedor creado!",

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UsuariosService } from 'src/app/services/usuarios.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,10 +9,19 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
   public uiBasicCollapsed = false;
   public samplePagesCollapsed = false;
-  
-  constructor() { }
+  public role = false
+  constructor(private usuarioService:UsuariosService) { }
 
   ngOnInit() {
+    this.usuarioService.getUsuarioLogeado().subscribe(usuario => {
+      if(usuario.rol == "6199cc15f67003035d912bb8"){
+        this.role = true
+      }else{
+        this.role = false
+      }
+   
+    })
+
     const body = document.querySelector('body');
 
     // add class 'hover-open' to sidebar navitem while hover in sidebar-icon-only menu

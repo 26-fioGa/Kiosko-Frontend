@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import swal from "sweetalert2";
-import { SucursalesService } from "src/app/services/sucursales.service ";
-import { Sucursal,CreateSucursalDTO } from "src/app/models/sucursal.model.";
+import { SucursalesService } from "src/app/services/sucursales.service";
+import { Sucursal, CreateSucursalDTO } from "src/app/models/sucursal.model";
 
 @Component({
     selector: 'app-sucursales',
@@ -11,8 +11,9 @@ import { Sucursal,CreateSucursalDTO } from "src/app/models/sucursal.model.";
 })
 export class SucursalesComponent implements OnInit {
   sucursales: Sucursal[] = [];
-  sucursal: Sucursal;
+  sucursal: Sucursal={_id:"",nombre:"",ubicacion:""};
   sucursalDTO: CreateSucursalDTO = {nombre:"",ubicacion:""};
+  modalTitle:String;
 
   // Inyectamos la clase Service y el módulo Router y Activated Route
   constructor(
@@ -21,12 +22,22 @@ export class SucursalesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+  this.getSucursales()
+  }
+  getSucursales():void{
     this.sucursalService
-      .getSucursales()
-      .subscribe((sucursales) => (this.sucursales = sucursales));
+    .getSucursales()
+    .subscribe((sucursales) => (this.sucursales = sucursales));
   }
 
-  openMediumModal(mediumModalContent) {
+  openMediumModal(mediumModalContent, title) {
+    this.modalTitle = title;
+    if (this.modalTitle == "Crear Sucursal"){
+      this.sucursalDTO = {
+        nombre: "",
+        ubicacion: "",
+      };
+    }
     this.modalService.open(mediumModalContent);
   }
 
@@ -34,6 +45,7 @@ export class SucursalesComponent implements OnInit {
     this.sucursalService
       .createSucursal(this.sucursalDTO)
       .subscribe((sucursal) => {
+        this.sucursales.push(sucursal)
         swal.fire(
           "¡Sucursal creada!",
           `Sucursal ${sucursal.nombre} ha sido creada con éxito`,
@@ -41,30 +53,36 @@ export class SucursalesComponent implements OnInit {
         );
       });
   }
+  
 
-  cargarProveedor(id): void {
+  cargarSucursal(id): void {
     this.sucursalService
       .getSucursal(id)
-      .subscribe((sucursal) => (this.sucursal = sucursal));
+      .subscribe((sucursal) => {this.sucursalDTO = sucursal;this.sucursal._id = id});
   }
 
-  update(): void {
+  update(id): void {
+    this.sucursal._id = id; this.sucursal.nombre = this.sucursalDTO.nombre; this.sucursal.ubicacion = this.sucursalDTO.ubicacion
     this.sucursalService
-      .updateProveedor(this.sucursal)
-      .subscribe((sucursal) => {
+      .updateSucursal(this.sucursal)
+      .subscribe((sucursal1) => {
         swal.fire(
-          "Proveedor actualizado",
-          `Proveedor ${sucursal.nombre} ha sido actualizado con éxito`,
+          "Sucursal actualizada",
+          `Sucursal ha sido actualizada con éxito`,
           "success"
         );
       });
+this.sucursal ={_id:"",nombre:"",ubicacion:""};
+this.sucursalDTO = {nombre:"",ubicacion:""};
+
+      this.getSucursales()
   }
 
   delete(sucursal: Sucursal): void {
     swal
       .fire({
-        title: "Eliminar Proveedor",
-        text: `¿Está seguro que desea eliminar ${sucursal.nombre} ${sucursal._id} de proveedores?`,
+        title: "Eliminar Sucursal",
+        text: `¿Está seguro que desea eliminar ${sucursal.nombre} de las sucursales?`,
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
@@ -74,15 +92,14 @@ export class SucursalesComponent implements OnInit {
       .then((result) => {
         if (result.isConfirmed) {
           this.sucursalService
-            .deleteProveedor(sucursal._id)
-            .subscribe((response) => {
-              // En esta línea hacemos que quite el cliente eliminado de la tabla sin tener que refrescar o llamar nuevamente al método listar
-              this.sucursales = this.sucursales.filter(
+            .deleteSucursal(sucursal._id)
+            .subscribe(() => {
+            this.sucursales = this.sucursales.filter(
                 (pro) => pro !== sucursal
               );
               swal.fire(
-                "Proveedor Eliminado",
-                `Proveedor ${sucursal.nombre} ha sido eliminado exitosamente`,
+                "Sucursal Eliminada",
+                `La Sucursal ${sucursal.nombre} ha sido eliminada exitosamente`,
                 "success"
               );
             });

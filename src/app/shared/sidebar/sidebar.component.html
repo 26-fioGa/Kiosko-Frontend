@@ -1,54 +1,103 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
-    <ul class="nav">
+  <ul class="nav">
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        (click)="uiBasicCollapsed = !uiBasicCollapsed"
+        [attr.aria-expanded]="uiBasicCollapsed"
+        aria-controls="ui-basic"
+      >
+        <span class="menu-title">Venta</span>
+        <i class="menu-arrow"></i>
+        <i class="mdi mdi-vector-circle menu-icon"></i>
+      </a>
+      <div class="collapse" id="ui-basic" [ngbCollapse]="!uiBasicCollapsed">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="procesos/venta"
+              routerLinkActive="active"
+              #nuevaVenta="routerLinkActive"
+              >Nueva Venta</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="procesos/compra"
+              routerLinkActive="active"
+              #ventaRealizada="routerLinkActive"
+              >Ventas Realizadas</a
+            >
+          </li>
+        </ul>
+      </div>
+    </li>
+    <li class="nav-item" [ngClass]="{ active: clientes.isActive }" *ngIf="role">
+      <a
+        class="nav-link"
+        routerLink="clientes"
+        routerLinkActive
+        #clientes="routerLinkActive"
+      >
+        <span class="menu-title">Clientes</span>
+        <i class="mdi mdi-account-switch menu-icon"></i>
+      </a>
+    </li>
 
-        <li class="nav-item">
-            <a class="nav-link" (click)="uiBasicCollapsed = !uiBasicCollapsed" [attr.aria-expanded]="uiBasicCollapsed" aria-controls="ui-basic">
-                <span class="menu-title">Venta</span>
-                <i class="menu-arrow"></i>
-                <i class="mdi mdi-vector-circle menu-icon"></i>
-            </a>
-            <div class="collapse" id="ui-basic" [ngbCollapse]="!uiBasicCollapsed">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="procesos/venta" routerLinkActive="active" #nuevaVenta="routerLinkActive">Nueva Venta</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="procesos/compra" routerLinkActive="active" #ventaRealizada="routerLinkActive">Ventas Realizadas</a>
-                    </li>
-                </ul>
-            </div>
-        </li>
-        <li class="nav-item" [ngClass]="{ active: clientes.isActive }">
-            <a class="nav-link" routerLink="clientes" routerLinkActive #clientes="routerLinkActive">
-                <span class="menu-title">Clientes</span>
-                <i class="mdi mdi-account-switch menu-icon"></i>
-            </a>
-        </li>
+    <li class="nav-item" [ngClass]="{ active: articulos.isActive }">
+      <a
+        class="nav-link"
+        routerLink="items"
+        routerLinkActive
+        #articulos="routerLinkActive"
+      >
+        <span class="menu-title">Artículos</span>
+        <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+      </a>
+    </li>
+    <li
+      class="nav-item"
+      [ngClass]="{ active: proveedores.isActive }"
+      *ngIf="role"
+    >
+      <a
+        class="nav-link"
+        routerLink="proveedores"
+        routerLinkActive
+        #proveedores="routerLinkActive"
+      >
+        <span class="menu-title">Proveedores</span>
+        <i class="mdi mdi-truck menu-icon"></i>
+      </a>
+    </li>
+    <li
+      class="nav-item"
+      [ngClass]="{ active: sucursales.isActive }"
+      *ngIf="role"
+    >
+      <a
+        class="nav-link"
+        routerLink="sucursales"
+        routerLinkActive
+        #sucursales="routerLinkActive"
+      >
+        <span class="menu-title">Sucursales</span>
+        <i class="mdi mdi-factory menu-icon"></i>
+      </a>
+    </li>
 
-        <li class="nav-item" [ngClass]="{ active: articulos.isActive }">
-            <a class="nav-link" routerLink="items" routerLinkActive #articulos="routerLinkActive">
-                <span class="menu-title">Artículos</span>
-                <i class="mdi mdi-format-list-bulleted menu-icon"></i>
-            </a>
-        </li>
-        <li class="nav-item" [ngClass]="{ active: proveedores.isActive }">
-            <a class="nav-link" routerLink="proveedores" routerLinkActive #proveedores="routerLinkActive">
-                <span class="menu-title">Proveedores</span>
-                <i class="mdi mdi-truck menu-icon"></i>
-            </a>
-        </li>
-        <li class="nav-item" [ngClass]="{ active: sucursales.isActive }">
-            <a class="nav-link" routerLink="sucursales" routerLinkActive #sucursales="routerLinkActive">
-                <span class="menu-title">Sucursales</span>
-                <i class="mdi mdi-factory menu-icon"></i>
-            </a>
-        </li>
-
-        <li class="nav-item" [ngClass]="{ active: usuarios.isActive }">
-            <a class="nav-link" routerLink="usuarios" routerLinkActive #usuarios="routerLinkActive">
-                <span class="menu-title">Usuarios</span>
-                <i class="mdi mdi-account-multiple menu-icon"></i>
-            </a>
-        </li>
-    </ul>
+    <li class="nav-item" [ngClass]="{ active: usuarios.isActive }" *ngIf="role">
+      <a
+        class="nav-link"
+        routerLink="usuarios"
+        routerLinkActive
+        #usuarios="routerLinkActive"
+      >
+        <span class="menu-title">Usuarios</span>
+        <i class="mdi mdi-account-multiple menu-icon"></i>
+      </a>
+    </li>
+  </ul>
 </nav>

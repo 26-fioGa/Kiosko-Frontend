@@ -12,7 +12,7 @@ export class AuthService {
   private apiUrl = `${environment.API_URL}/api`;
   constructor(private http: HttpClient, private tokenService:TokenService) {}
   login(email: string, password: string) {
-    return this.http.post<Auth>(`${this.apiUrl}/auth/signin`, { email, password }).pipe(tap(response => this.tokenService.saveToken(response.token)));
+    return this.http.post<Auth>(`${this.apiUrl}/auth/signin`, { email, password }).pipe(tap(response => this.tokenService.saveToken(response[0].token)));
   }
   //en proceso
   profile(email: string, password: string) {

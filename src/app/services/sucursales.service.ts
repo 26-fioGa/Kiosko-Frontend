@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from "src/environments/environment";
-import { Sucursal,CreateSucursalDTO } from "../models/sucursal.model.";
+import { Sucursal,CreateSucursalDTO } from "../models/sucursal.model";
 import { Observable } from "rxjs";
 import { TokenService } from 'src/app/services/token.service';
 import { map } from "rxjs/operators";
@@ -26,7 +26,7 @@ import { map } from "rxjs/operators";
       return this.http.get<Sucursal>(`${this.apiUrl}/${id}`);
     }
   
-    updateProveedor(sucursal: Sucursal): Observable<Sucursal> {
+    updateSucursal(sucursal: Sucursal): Observable<Sucursal> {
       return this.http.put<Sucursal>(
         `${this.apiUrl}/${sucursal._id}`,
         sucursal
@@ -34,7 +34,7 @@ import { map } from "rxjs/operators";
       );
     }
   
-    deleteProveedor(id: string): Observable<Sucursal> {
-      return this.http.delete<Sucursal>(`${this.apiUrl}${id}`);
+    deleteSucursal(id: string): Observable<Sucursal> {
+      return this.http.delete<Sucursal>(`${this.apiUrl}/${id}`);
     }
   }

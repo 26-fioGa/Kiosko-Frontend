@@ -2,8 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import swal from "sweetalert2";
 import { UsuariosService } from 'src/app/services/usuarios.service';
-import { Usuario,CreateUsuarioDTO } from 'src/app/models/usuario.model';
-import { SucursalesService } from "src/app/services/sucursales.service ";
+import { Usuario,CreateUsuarioDTO,CreatedUsuarioDTO } from 'src/app/models/usuario.model';
+import { SucursalesService } from "src/app/services/sucursales.service";
 @Component({
     selector: 'app-usuarios',
     templateUrl: './usuarios.component.html',
@@ -11,31 +11,54 @@ import { SucursalesService } from "src/app/services/sucursales.service ";
 })
 export class UsuariosComponent implements OnInit {
   usuarios: Usuario[] = [];
+
+  roles = [{_id :"6199cc15f67003035d912bb8",nombre:"ADMIN"},{_id:"6199cc15f67003035d912bb7",nombre:"USER"}];
   usuario: Usuario= { _id:"", username:"", email:"", direccion:"",telefono:"", nombre:"", apellido:"", rol:"",tienda:"", createdAt:"", updatedAt:""};
   usuarioDTO: CreateUsuarioDTO= {  username:"", email:"",password:"", direccion:"",telefono:"", nombre:"", apellido:"", rol:"",tienda:""};
+  usuariodDTIO:CreatedUsuarioDTO= { _id:"", username:"", email:"", direccion:"",telefono:"", nombre:"", apellido:"", rol:"",tienda:""}
   modalTitle = ""
+  usuarioTiendaId=""
 
   // Inyectamos la clase Service y el módulo Router y Activated Route
   constructor(
     private modalService: NgbModal,
-    private usuarioService: UsuariosService
+    private usuarioService: UsuariosService,private sucursalService:SucursalesService
   ) {}
 
   ngOnInit(): void {
   this.getUsuarios()
+  this.getUserLogeado()
+
   }
   getUsuarios():void{
     this.usuarioService
     .getUsuarios()
     .subscribe((usuarios) => (this.usuarios = usuarios));
   }
+  getUserLogeado():void{
+   this.usuarioService.getUsuarioLogeado().subscribe(usuario => {
+      this.usuarioTiendaId = usuario.tienda
+    })   
+  }
+  getNombreTienda(id):void{
 
+      this.sucursalService.getSucursal(id).subscribe(tienda => {  
+        console.log(tienda.nombre)
+        this.usuarioDTO.tienda = tienda.nombre})
+  }
+ 
   openMediumModal(mediumModalContent,title) {
     this.modalTitle = title;
     if (this.modalTitle == "Crear Usuario"){
       this.usuarioDTO = {  username:"", email:"",password:"", direccion:"",telefono:"", nombre:"", apellido:"", rol:"",tienda:""}
+
+     this.getNombreTienda(this.usuarioTiendaId[0])
+      
     }
+   
+    
     this.modalService.open(mediumModalContent);
+    
   }
   /*getRol(id){
         if(id == "6199cc15f67003035d912bb8"){
@@ -44,16 +67,12 @@ export class UsuariosComponent implements OnInit {
             return "USER"
         }
   }
-  
-  getSucursal(id){
-
-    return this.sucursalService.getSucursal(id).subscribe((sucursal)=>sucursal.nombre)
- 
-}
-*/
+  */
   create(): void {
+    
+    console.log(this.usuarioDTO)
     this.usuarioService
-      .createUsuario(this.usuario)
+      .createUsuario(this.usuarioDTO)
       .subscribe((usuario) => {
         this.usuarios.push(usuario)
         swal.fire(
@@ -67,7 +86,7 @@ export class UsuariosComponent implements OnInit {
   cargarUsuario(id): void {
     this.usuarioService
       .getUsuario(id)
-      .subscribe((usuario) => (this.usuario = usuario));
+      .subscribe((usuario) =>{} );
   }
 
   update(): void {
@@ -86,7 +105,7 @@ export class UsuariosComponent implements OnInit {
     swal
       .fire({
         title: "Eliminar Usuario",
-        text: `¿Está seguro que desea eliminar ${usuario.nombre} de usuarios?`,
+        text: `¿Está seguro que desea eliminar ${usuario.username} de usuarios?`,
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
@@ -103,7 +122,7 @@ export class UsuariosComponent implements OnInit {
               );
               swal.fire(
                 "Usuario Eliminado",
-                `El Usuario ${usuario.nombre} ha sido eliminado exitosamente`,
+                `El Usuario ${usuario.username} ha sido eliminado exitosamente`,
                 "success"
               );
             });

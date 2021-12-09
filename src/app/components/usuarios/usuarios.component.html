@@ -10,8 +10,7 @@
           <button
             type="button"
             class="btn btn-gradient-success btn-rounded btn-icon"
-            (click)="openMediumModal(mediumModalContent)"
-            title="Crear nuevo usuario"
+            (click)="openMediumModal(mediumModalContent, 'Crear Usuario')"
           >
             <i class="mdi mdi-plus"></i>
           </button>
@@ -26,7 +25,7 @@
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel-2">
-                  Registrar nuevo usuario
+                  {{ modalTitle }}
                 </h5>
                 <button
                   type="button"
@@ -43,19 +42,33 @@
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label for="nomnbres">Nombres</label>
-                        <input type="text" class="form-control" id="nombres" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="nombre"
+                          name="nombre"
+                          [(ngModel)]="usuarioDTO.nombre"
+                        />
                       </div>
                       <div class="form-group">
                         <label for="apellidos">Apellidos</label>
                         <input
                           type="text"
                           class="form-control"
-                          id="apellidos"
+                          id="apellido"
+                          name="apellido"
+                          [(ngModel)]="usuarioDTO.apellido"
                         />
                       </div>
                       <div class="form-group">
                         <label for="username">Nombre de usuario</label>
-                        <input type="text" class="form-control" id="username" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="username"
+                          name="username"
+                          [(ngModel)]="usuarioDTO.username"
+                        />
                       </div>
                       <div class="form-group">
                         <label for="password">Contraseña</label>
@@ -63,6 +76,8 @@
                           type="password"
                           class="form-control"
                           id="password"
+                          name="password"
+                          [(ngModel)]="usuarioDTO.password"
                         />
                       </div>
                     </div>
@@ -70,14 +85,25 @@
                       <div class="form-group">
                         <label for="rol">Rol</label>
 
-                        <select class="form-control">
-                          <option>Administrador</option>
-                          <option>Usuario</option>
+                        <select
+                          class="form-control"
+                          name="rol"
+                          [(ngModel)]="usuarioDTO.rol"
+                        >
+                          <option *ngFor="let rol of roles" [ngValue]="rol._id">
+                            {{ rol.nombre }}
+                          </option>
                         </select>
                       </div>
                       <div class="form-group">
                         <label for="telefono">Teléfono</label>
-                        <input type="text" class="form-control" id="telefono" />
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="telefono"
+                          name="telefono"
+                          [(ngModel)]="usuarioDTO.telefono"
+                        />
                       </div>
                       <div class="form-group">
                         <label for="direccion">Dirección</label>
@@ -85,19 +111,28 @@
                           type="text"
                           class="form-control"
                           id="direccion"
+                          name="direccion"
+                          [(ngModel)]="usuarioDTO.direccion"
                         />
                       </div>
-                      <div class="form-group">
-                        <label for="sucursal">Sucursal</label>
 
-                        <select class="form-control">
-                          <option>Sucursal N°1</option>
-                          <option>Sucursal N°2</option>
-                        </select>
-                      </div>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="tienda"
+                        name="tienda"
+                        [(ngModel)]="usuarioDTO.tienda"
+                      />
+
                       <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" />
+                        <input
+                          type="email"
+                          class="form-control"
+                          id="email"
+                          name="email"
+                          [(ngModel)]="usuarioDTO.email"
+                        />
                       </div>
                     </div>
                   </div>
@@ -105,11 +140,20 @@
               </div>
               <div class="modal-footer">
                 <button
-                  type="button"
+                  type="submit"
                   class="btn btn-main"
-                  (click)="modal.close()"
+                  *ngIf="modalTitle == 'Crear Usuario'"
+                  (click)="modal.close(); create()"
                 >
-                  Guardar
+                  Crear
+                </button>
+                <button
+                  type="submit"
+                  class="btn btn-main"
+                  *ngIf="modalTitle == 'Editar Usuario'"
+                  (click)="modal.close(); update(usuario._id)"
+                >
+                  Actualizar
                 </button>
                 <button
                   type="button"
@@ -168,8 +212,17 @@
                       ngbDropdownMenu
                       aria-labelledby="dropdownMenuIconButton1"
                     >
-                      <a class="dropdown-item">Editar</a>
-                      <a class="dropdown-item">Eliminar</a>
+                      <a
+                        class="dropdown-item"
+                        (click)="
+                          cargarUsuario(usuario._id);
+                          openMediumModal(mediumModalContent, 'Editar Usuario')
+                        "
+                        >Editar</a
+                      >
+                      <a class="dropdown-item" (click)="delete(usuario)"
+                        >Eliminar</a
+                      >
                     </div>
                   </div>
                 </td>

@@ -24,3 +24,7 @@ export class UsuarioLogin {
 export interface CreateUsuarioDTO extends Omit<Usuario, '_id'|'createdAt'|'updatedAt'>{
   password: string;
 }
+
+export interface CreatedUsuarioDTO extends Omit<Usuario, 'createdAt'|'updatedAt'|'password'>{
+
+}

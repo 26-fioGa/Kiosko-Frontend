@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from "src/environments/environment";
-import { Sucursal,CreateSucursalDTO } from "../models/sucursal.model.";
+import { Sucursal,CreateSucursalDTO } from "../models/sucursal.model";
 import { Observable } from "rxjs";
 import { TokenService } from 'src/app/services/token.service';
 import { map } from "rxjs/operators";

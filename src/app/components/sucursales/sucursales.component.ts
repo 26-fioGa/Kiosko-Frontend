@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import swal from "sweetalert2";
-import { SucursalesService } from "src/app/services/sucursales.service ";
-import { Sucursal,CreateSucursalDTO } from "src/app/models/sucursal.model.";
+import { SucursalesService } from "src/app/services/sucursales.service";
+import { Sucursal, CreateSucursalDTO } from "src/app/models/sucursal.model";
 
 @Component({
     selector: 'app-sucursales',

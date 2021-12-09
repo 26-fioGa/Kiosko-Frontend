@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from "src/environments/environment";
-import { Usuario } from "../models/usuario.model";
+import { Usuario,CreateUsuarioDTO } from "../models/usuario.model";
 import { Observable } from "rxjs";
 import { TokenService } from 'src/app/services/token.service';
 import { map } from "rxjs/operators";
@@ -21,7 +21,7 @@ import { map } from "rxjs/operators";
       
       return this.http.get<Usuario>(`${this.apiUrl}/${this.tokenService.getPayload().id}`);
     }
-    createUsuario(usuario: Usuario): Observable<Usuario> {
+    createUsuario(usuario: CreateUsuarioDTO): Observable<Usuario> {
       // Después del post también se debe ingresar el tipo de objeto que retornará
       return this.http.post<Usuario>(this.apiUrl, usuario);
     }

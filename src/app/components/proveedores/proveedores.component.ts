@@ -11,9 +11,15 @@ import { ProveedoresService } from "../../services/proveedores.service";
 })
 export class ProveedoresComponent implements OnInit {
   proveedores: Proveedor[] = [];
-  proveedor: Proveedor;
+  proveedor: Proveedor = {
+    nombre: "",
+    ruc: "",
+    direccion: "",
+    telefono: "",
+    email: "",
+    tiendaId: "",
+  };
 
-  // Inyectamos la clase Service y el módulo Router y Activated Route
   constructor(
     private modalService: NgbModal,
     private proveedorService: ProveedoresService
@@ -42,13 +48,11 @@ export class ProveedoresComponent implements OnInit {
       );
     });
     this.getProveedores();
-    this.proveedor = new Proveedor();
   }
 
   cargarProveedor(_id): void {
     this.proveedorService.getProveedor(_id).subscribe((proveedor) => {
       this.proveedor = proveedor;
-      console.log(this.proveedor);
     });
   }
 
@@ -60,8 +64,16 @@ export class ProveedoresComponent implements OnInit {
         "success"
       );
     });
+    this.proveedor = {
+      _id: "",
+      nombre: "",
+      ruc: "",
+      direccion: "",
+      telefono: "",
+      email: "",
+      tiendaId: "",
+    };
     this.getProveedores();
-    this.proveedor = new Proveedor();
   }
 
   delete(proveedor: Proveedor): void {
@@ -80,7 +92,6 @@ export class ProveedoresComponent implements OnInit {
           this.proveedorService
             .deleteProveedor(proveedor._id)
             .subscribe((response) => {
-              // En esta línea hacemos que quite el cliente eliminado de la tabla sin tener que refrescar o llamar nuevamente al método listar
               this.proveedores = this.proveedores.filter(
                 (pro) => pro !== proveedor
               );

@@ -1,4 +1,4 @@
-export class Proveedor {
+export interface Proveedor {
   _id: string;
   nombre: string;
   ruc: string;

@@ -38,7 +38,7 @@
                 </button>
               </div>
               <div class="modal-body">
-                <form class="forms-sample pl-3 pr-3" (ngSubmit)="create()">
+                <form class="forms-sample pl-3 pr-3">
                   <div class="form-group">
                     <label for="nombre">Nombre</label>
                     <input
@@ -57,7 +57,13 @@
                       [(ngModel)]="sucursalDTO.ubicacion"
                     />
                   </div>
-                  <button type="submit" class="btn btn-main">Guardar</button>
+                  <button
+                    type="submit"
+                    class="btn btn-main"
+                    (click)="modal.close(); create()"
+                  >
+                    Guardar
+                  </button>
                   <button
                     type="button"
                     class="btn btn-light"

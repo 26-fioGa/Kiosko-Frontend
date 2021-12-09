@@ -19,7 +19,7 @@ const routes: Routes = [
     { path: 'proveedores', component: ProveedoresComponent,canActivate:[AuthGuard],data: {roles:'6199cc15f67003035d912bb8'} },
     { path: 'clientes', component: ClientesComponent,canActivate:[AuthGuard],data: {roles:'6199cc15f67003035d912bb8'}  },
     { path: 'sucursales', component: SucursalesComponent,canActivate:[AuthGuard],data: {roles:'6199cc15f67003035d912bb8'}  },
-    { path: 'items', component: ItemsComponent,canActivate:[AuthGuard],data: {roles:'6199cc15f67003035d912bb8'} },
+    { path: 'items', component: ItemsComponent },
     {
         path: 'procesos',
         loadChildren: () =>

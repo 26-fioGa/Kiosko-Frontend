@@ -1,8 +1,9 @@
 export class Proveedor {
-  id: string;
+  _id: string;
   nombre: string;
   ruc: string;
   direccion: string;
   telefono: string;
   email: string;
+  tiendaId: string;
 }

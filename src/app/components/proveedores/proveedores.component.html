@@ -7,9 +7,9 @@
             <div class="card-body">
                 <div class="row justify-content-between pl-3 pr-3">
                     <h6>Proveedores Registrados</h6>
-                    <button type="button" class="btn btn-gradient-success btn-rounded btn-icon" (click)="openMediumModal(mediumModalContent)" title="Crear nuevo usuario">
-            <i class="mdi mdi-plus"></i>
-          </button>
+                    <button type="button" class="btn btn-gradient-success btn-rounded btn-icon" (click)="openMediumModal(mediumModalContent)" title="Crear nuevo proveedor">
+                        <i class="mdi mdi-plus"></i>
+                    </button>
                     <!-- Inicio Modal -->
                     <ng-template #mediumModalContent let-modal class="modal fade" id="exampleModal-2" aria-labelledby="exampleModalLabel-2">
                         <div class="modal-content">
@@ -18,43 +18,42 @@
                                     Registrar nuevo proveedor
                                 </h5>
                                 <button type="button" class="close" (click)="modal.dismiss()" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
                             <div class="modal-body">
                                 <form class="forms-sample pl-3 pr-3">
-
                                     <div class="form-group">
                                         <label for="nombre">Razón Social</label>
-                                        <input type="email" class="form-control" id="nombre" [(ngModel)]="proveedor.nombre" />
+                                        <input type="text" class="form-control" id="nombre" [(ngModel)]="proveedor.nombre" name="nombre" />
                                     </div>
                                     <div class="form-group">
                                         <label for="ruc">RUC</label>
-                                        <input type="text" class="form-control" id="ruc" [(ngModel)]="proveedor.ruc" />
+                                        <input type="text" class="form-control" id="ruc" [(ngModel)]="proveedor.ruc" name="ruc" />
                                     </div>
                                     <div class="form-group">
                                         <label for="direccion">Dirección</label>
-                                        <input type="text" class="form-control" id="direccion" [(ngModel)]="proveedor.direccion" />
+                                        <input type="text" class="form-control" id="direccion" [(ngModel)]="proveedor.direccion" name="direccion" />
                                     </div>
                                     <div class="form-group">
                                         <label for="telefono">Teléfono</label>
-                                        <input type="text" class="form-control" id="telefono" [(ngModel)]="proveedor.telefono" />
+                                        <input type="text" class="form-control" id="telefono" [(ngModel)]="proveedor.telefono" name="telefono" />
                                     </div>
                                     <div class="form-group">
                                         <label for="email">Email</label>
-                                        <input type="text" class="form-control" id="email" [(ngModel)]="proveedor.email" />
+                                        <input type="text" class="form-control" id="email" [(ngModel)]="proveedor.email" name="email" />
                                     </div>
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-main" (click)="modal.close()" (click)="create()" *ngIf="!proveedor.id else elseBlock">Crear Proveedor</button>
+                                <button type="button" class="btn btn-main" *ngIf="proveedor._id else elseBlock" (click)="modal.close(); update()">Guardar Cambios</button>
                                 <ng-template #elseBlock>
-                                    <button type="submit" class="btn btn-main" (click)="modal.close()" (click)="update()">Guardar
-                    Cambios</button>
+                                    <button type="submit" class="btn btn-main" (click)="modal.close(); create()">Crear
+                                        Proveedor</button>
                                 </ng-template>
                                 <button type="button" class="btn btn-light" (click)="modal.close()">
-                  Cancelar
-                </button>
+                                    Cancelar
+                                </button>
                             </div>
                         </div>
                     </ng-template>
@@ -83,10 +82,10 @@
                                 <td>
                                     <div ngbDropdown>
                                         <button type="button" class="btn btn-link btn-fw btn-rounded btn-icon" id="dropdownMenuIconButton1" ngbDropdownToggle title="Acciones">
-                      <i class="mdi mdi-dots-vertical"></i>
-                    </button>
+                                            <i class="mdi mdi-dots-vertical"></i>
+                                        </button>
                                         <div ngbDropdownMenu aria-labelledby="dropdownMenuIconButton1">
-                                            <a class="dropdown-item" (click)="cargarProveedor(proveedor.id)" (click)="openMediumModal(mediumModalContent)">Editar</a>
+                                            <a class="dropdown-item" (click)="cargarProveedor(proveedor._id)" (click)="openMediumModal(mediumModalContent)">Editar</a>
                                             <a class="dropdown-item" (click)="delete(proveedor)">Eliminar</a>
                                         </div>
                                     </div>

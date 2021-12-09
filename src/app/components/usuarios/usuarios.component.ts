@@ -3,7 +3,7 @@ import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import swal from "sweetalert2";
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import { Usuario } from 'src/app/models/usuario.model';
-
+import { SucursalesService } from "src/app/services/sucursales.service ";
 @Component({
     selector: 'app-usuarios',
     templateUrl: './usuarios.component.html',
@@ -12,11 +12,12 @@ import { Usuario } from 'src/app/models/usuario.model';
 export class UsuariosComponent implements OnInit {
   usuarios: Usuario[] = [];
   usuario: Usuario;
+  sucursalNombre = ""
 
   // Inyectamos la clase Service y el módulo Router y Activated Route
   constructor(
     private modalService: NgbModal,
-    private usuarioService: UsuariosService
+    private usuarioService: UsuariosService,private sucursalService: SucursalesService
   ) {}
 
   ngOnInit(): void {
@@ -28,7 +29,20 @@ export class UsuariosComponent implements OnInit {
   openMediumModal(mediumModalContent) {
     this.modalService.open(mediumModalContent);
   }
+  getRol(id){
+        if(id == "6199cc15f67003035d912bb8"){
+            return "ADMIN"
+        }else{
+            return "USER"
+        }
+  }
+  /*
+  getSucursal(id){
 
+    return this.sucursalService.getSucursal(id).subscribe((sucursal)=>sucursal.nombre)
+ 
+}
+*/
   create(): void {
     this.usuarioService
       .createUsuario(this.usuario)

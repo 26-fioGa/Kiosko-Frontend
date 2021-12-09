@@ -22,8 +22,8 @@ import { map } from "rxjs/operators";
       return this.http.post<Sucursal>(this.apiUrl, sucursal);
     }
   
-    getProveedor(id: any): Observable<Sucursal> {
-      return this.http.get<Sucursal>(`${this.apiUrl}${id}`);
+    getSucursal(id: any): Observable<Sucursal> {
+      return this.http.get<Sucursal>(`${this.apiUrl}/${id}`);
     }
   
     updateProveedor(sucursal: Sucursal): Observable<Sucursal> {

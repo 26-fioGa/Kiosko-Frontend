@@ -44,7 +44,7 @@ export class SucursalesComponent implements OnInit {
 
   cargarProveedor(id): void {
     this.sucursalService
-      .getProveedor(id)
+      .getSucursal(id)
       .subscribe((sucursal) => (this.sucursal = sucursal));
   }
 

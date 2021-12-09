@@ -26,19 +26,18 @@ import { map } from "rxjs/operators";
       return this.http.post<Usuario>(this.apiUrl, usuario);
     }
   
-    getProveedor(id: any): Observable<Usuario> {
-      return this.http.get<Usuario>(`${this.apiUrl}${id}`);
+    getUsuario(id: any): Observable<Usuario> {
+      return this.http.get<Usuario>(`${this.apiUrl}/${id}`);
     }
   
-    updateProveedor(usuario: Usuario): Observable<Usuario> {
+    updateUsuario(usuario: Usuario): Observable<Usuario> {
       return this.http.put<Usuario>(
         `${this.apiUrl}/${usuario._id}`,
         usuario
-      
       );
     }
   
-    deleteProveedor(id: string): Observable<Usuario> {
-      return this.http.delete<Usuario>(`${this.apiUrl}${id}`);
+    deleteUsuario(id: string): Observable<Usuario> {
+      return this.http.delete<Usuario>(`${this.apiUrl}/${id}`);
     }
   }

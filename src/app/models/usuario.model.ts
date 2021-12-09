@@ -2,15 +2,14 @@ export interface Usuario {
   _id: string;
   username: string;
   email: string;
-  password: string;
   direccion: string;
   telefono: string;
   nombre: string;
   apellido: string;
   rol: string;
   tienda: string;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export class UsuarioLogin {
@@ -20,4 +19,8 @@ export class UsuarioLogin {
     public password: string,
    
 ) { }
+}
+
+export interface CreateUsuarioDTO extends Omit<Usuario, '_id'|'createdAt'|'updatedAt'>{
+  password: string;
 }

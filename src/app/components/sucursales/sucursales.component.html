@@ -10,7 +10,7 @@
           <button
             type="button"
             class="btn btn-gradient-success btn-rounded btn-icon"
-            (click)="openMediumModal(mediumModalContent)"
+            (click)="openMediumModal(mediumModalContent, 'Crear Sucursal')"
             title="Crear nueva sucursal"
           >
             <i class="mdi mdi-plus"></i>
@@ -26,7 +26,7 @@
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel-2">
-                  Registrar nueva sucursal
+                  {{ modalTitle }}
                 </h5>
                 <button
                   type="button"
@@ -57,21 +57,32 @@
                       [(ngModel)]="sucursalDTO.ubicacion"
                     />
                   </div>
-                  <button
-                    type="submit"
-                    class="btn btn-main"
-                    (click)="modal.close(); create()"
-                  >
-                    Guardar
-                  </button>
-                  <button
-                    type="button"
-                    class="btn btn-light"
-                    (click)="modal.close()"
-                  >
-                    Cancelar
-                  </button>
                 </form>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="submit"
+                  class="btn btn-main"
+                  *ngIf="modalTitle == 'Crear Sucursal'"
+                  (click)="modal.close(); create()"
+                >
+                  Crear
+                </button>
+                <button
+                  type="submit"
+                  class="btn btn-main"
+                  *ngIf="modalTitle == 'Editar Sucursal'"
+                  (click)="modal.close(); update(sucursal._id)"
+                >
+                  Actualizar
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-light"
+                  (click)="modal.close()"
+                >
+                  Cancelar
+                </button>
               </div>
             </div>
           </ng-template>
@@ -106,8 +117,17 @@
                       ngbDropdownMenu
                       aria-labelledby="dropdownMenuIconButton1"
                     >
-                      <a class="dropdown-item">Editar</a>
-                      <a class="dropdown-item">Eliminar</a>
+                      <a
+                        class="dropdown-item"
+                        (click)="
+                          cargarSucursal(sucursal._id);
+                          openMediumModal(mediumModalContent, 'Editar Sucursal')
+                        "
+                        >Editar</a
+                      >
+                      <a class="dropdown-item" (click)="delete(sucursal)"
+                        >Eliminar</a
+                      >
                     </div>
                   </div>
                 </td>

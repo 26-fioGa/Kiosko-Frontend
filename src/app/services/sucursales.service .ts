@@ -26,7 +26,7 @@ import { map } from "rxjs/operators";
       return this.http.get<Sucursal>(`${this.apiUrl}/${id}`);
     }
   
-    updateProveedor(sucursal: Sucursal): Observable<Sucursal> {
+    updateSucursal(sucursal: Sucursal): Observable<Sucursal> {
       return this.http.put<Sucursal>(
         `${this.apiUrl}/${sucursal._id}`,
         sucursal
@@ -34,7 +34,7 @@ import { map } from "rxjs/operators";
       );
     }
   
-    deleteProveedor(id: string): Observable<Sucursal> {
-      return this.http.delete<Sucursal>(`${this.apiUrl}${id}`);
+    deleteSucursal(id: string): Observable<Sucursal> {
+      return this.http.delete<Sucursal>(`${this.apiUrl}/${id}`);
     }
   }

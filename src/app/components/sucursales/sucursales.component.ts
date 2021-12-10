@@ -7,7 +7,7 @@ import { Sucursal, CreateSucursalDTO } from "src/app/models/sucursal.model";
 @Component({
     selector: 'app-sucursales',
     templateUrl: './sucursales.component.html',
-    styleUrls: ['./sucursales.component.scss']
+
 })
 export class SucursalesComponent implements OnInit {
   sucursales: Sucursal[] = [];

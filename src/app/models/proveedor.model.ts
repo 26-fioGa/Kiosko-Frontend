@@ -7,3 +7,7 @@ export interface Proveedor {
   email: string;
   tiendaId: string;
 }
+
+export interface ProveedorDTO extends Omit<Proveedor, '_id'>{
+
+}

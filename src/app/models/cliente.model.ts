@@ -5,3 +5,7 @@ export interface Cliente {
   direccion: string;
   telefono: string;
 }
+
+export interface ClienteDTO extends Omit<Cliente, '_id'>{
+
+}

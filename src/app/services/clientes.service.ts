@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { environment } from "src/environments/environment";
-import { Cliente } from "../models/cliente.model";
+import { Cliente,ClienteDTO } from "../models/cliente.model";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { TokenService } from "src/app/services/token.service";
@@ -19,7 +19,7 @@ export class ClientesService {
       .pipe(map((response) => response as Cliente[]));
   }
 
-  createCliente(cliente: Cliente): Observable<Cliente> {
+  createCliente(cliente: ClienteDTO): Observable<Cliente> {
     // Después del post también se debe ingresar el tipo de objeto que retornará
     return this.http.post<Cliente>(this.apiUrl, cliente);
   }

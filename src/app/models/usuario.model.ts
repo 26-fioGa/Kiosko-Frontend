@@ -6,8 +6,8 @@ export interface Usuario {
   telefono: string;
   nombre: string;
   apellido: string;
-  rol: string;
-  tienda: string;
+  rol: string[];
+  tienda: string[];
   createdAt: string;
   updatedAt: string;
 }

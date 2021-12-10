@@ -21,9 +21,7 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit():void {
-    this.usuarioService.getUsuarioLogeado().subscribe(usuario => {
-      this.username = usuario.username
-    })
+    this.username = this.tokenService.getUsername()
 
   }
 cerrarSesion(){

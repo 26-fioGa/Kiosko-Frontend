@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from 'src/app/services/usuarios.service';
-
+import { TokenService } from 'src/app/services/token.service';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -10,17 +10,16 @@ export class SidebarComponent implements OnInit {
   public uiBasicCollapsed = false;
   public samplePagesCollapsed = false;
   public role = false
-  constructor(private usuarioService:UsuariosService) { }
+  constructor(private usuarioService:UsuariosService, private tokenService: TokenService) { }
 
   ngOnInit() {
-    this.usuarioService.getUsuarioLogeado().subscribe(usuario => {
-      if(usuario.rol == "6199cc15f67003035d912bb8"){
-        this.role = true
-      }else{
-        this.role = false
-      }
-   
-    })
+    if(this.tokenService.getRol() == "6199cc15f67003035d912bb8"){
+      this.role = true
+    }else{
+      this.role = false
+    }
+
+    
 
     const body = document.querySelector('body');
 

@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { environment } from "src/environments/environment";
-import { Proveedor } from "../models/proveedor.model";
+import { Proveedor,ProveedorDTO } from "../models/proveedor.model";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { TokenService } from "src/app/services/token.service";
@@ -20,7 +20,7 @@ export class ProveedoresService {
       .pipe(map((response) => response as Proveedor[]));
   }
 
-  createProveedor(proveedor: Proveedor): Observable<Proveedor> {
+  createProveedor(proveedor: ProveedorDTO): Observable<Proveedor> {
     // Después del post también se debe ingresar el tipo de objeto que retornará
     return this.http.post<Proveedor>(this.apiUrl, proveedor);
   }

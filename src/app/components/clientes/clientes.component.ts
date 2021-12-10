@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import swal from "sweetalert2";
-import { Cliente } from "../../models/cliente.model";
+import { Cliente,ClienteDTO } from "../../models/cliente.model";
 import { ClientesService } from "../../services/clientes.service";
 
 @Component({
@@ -11,11 +11,19 @@ import { ClientesService } from "../../services/clientes.service";
 export class ClientesComponent implements OnInit {
   clientes: Cliente[] = [];
   cliente: Cliente = {
+    _id:"",
     nombre: "",
     dni: "",
     direccion: "",
     telefono: "",
   };
+  clienteDTO: ClienteDTO = {
+    nombre: "",
+    dni: "",
+    direccion: "",
+    telefono: "",
+  };
+  modalTitle:String;
 
   constructor(
     private modalService: NgbModal,
@@ -26,7 +34,16 @@ export class ClientesComponent implements OnInit {
     this.getClientes();
   }
 
-  openMediumModal(mediumModalContent) {
+  openMediumModal(mediumModalContent,title) {
+    this.modalTitle = title;
+    if (this.modalTitle == "Crear Cliente"){
+      this.clienteDTO= {
+        nombre: "",
+        dni: "",
+        direccion: "",
+        telefono: "",
+      };
+    }
     this.modalService.open(mediumModalContent);
   }
 
@@ -37,7 +54,7 @@ export class ClientesComponent implements OnInit {
   }
 
   create(): void {
-    this.clienteService.createCliente(this.cliente).subscribe(() => {
+    this.clienteService.createCliente(this.clienteDTO).subscribe(() => {
       swal.fire(
         "¡Cliente creado!",
         `El cliente ha sido creado con éxito`,
@@ -45,7 +62,7 @@ export class ClientesComponent implements OnInit {
       );
     });
     this.getClientes();
-    this.cliente = {
+    this.clienteDTO = {
       nombre: "",
       dni: "",
       direccion: "",
@@ -55,11 +72,18 @@ export class ClientesComponent implements OnInit {
 
   cargarCliente(_id): void {
     this.clienteService.getCliente(_id).subscribe((cliente) => {
-      this.cliente = cliente;
+      this.clienteDTO = cliente;
+      this.cliente._id = _id
     });
   }
 
-  update(): void {
+  update(id): void {
+    this.cliente._id = id;
+    this.cliente.nombre =  this.clienteDTO.nombre; 
+    this.cliente.direccion = this.clienteDTO.direccion
+    this.cliente.dni = this.clienteDTO.dni
+    this.cliente.telefono = this.clienteDTO.telefono
+
     this.clienteService.updateCliente(this.cliente).subscribe(() => {
       swal.fire(
         "Cliente actualizado",
@@ -67,6 +91,7 @@ export class ClientesComponent implements OnInit {
         "success"
       );
     });
+    this.getClientes();
     this.cliente = {
       _id: "",
       nombre: "",
@@ -74,7 +99,6 @@ export class ClientesComponent implements OnInit {
       direccion: "",
       telefono: "",
     };
-    this.getClientes();
   }
 
   delete(cliente: Cliente): void {

@@ -4,13 +4,13 @@ import { Venta } from "../../models/venta.model";
 
 // Adicional models
 import { Cliente } from "../../models/cliente.model";
-import { Sucursal } from "../../models/sucursal.model.";
+import { Sucursal } from "src/app/models/sucursal.model";
 import { Articulo } from "../../models/articulo.model";
 
 import { VentasService } from "../../services/ventas.service";
 // Adicional services
 import { ClientesService } from "../../services/clientes.service";
-import { SucursalesService } from "src/app/services/sucursales.service ";
+import { SucursalesService } from "src/app/services/sucursales.service";
 import { ArticulosService } from "../../services/articulos.service";
 import { Router, ActivatedRoute } from "@angular/router";
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import swal from "sweetalert2";
-import { Articulo } from "../../models/articulo.model";
+import { Articulo,ArticuloDTO } from "../../models/articulo.model";
 import { ArticulosService } from "../../services/articulos.service";
 
 @Component({
@@ -10,7 +10,18 @@ import { ArticulosService } from "../../services/articulos.service";
 })
 export class ItemsComponent implements OnInit {
   articulos: Articulo[] = [];
-  articulo: Articulo = {
+  articulo: Articulo={
+    _id:"",
+    cantidad: 0,
+    costoVenta: 0,
+    costoCompra: 0,
+    descripcion: "",
+    nombre: "",
+    perecero: Date,
+    tienda: "",
+    usuario: "",
+  }
+  articuloDTO: ArticuloDTO = {
     cantidad: 0,
     costoVenta: 0,
     costoCompra: 0,
@@ -20,6 +31,7 @@ export class ItemsComponent implements OnInit {
     tienda: "",
     usuario: "",
   };
+  modalTitle:String;
   constructor(
     private modalService: NgbModal,
     private articuloService: ArticulosService
@@ -28,7 +40,20 @@ export class ItemsComponent implements OnInit {
   ngOnInit(): void {
     this.getArticulos();
   }
-  openMediumModal(mediumModalContent) {
+  openMediumModal(mediumModalContent,title) {
+    this.modalTitle = title;
+    if (this.modalTitle == "Crear Articulo"){
+      this.articuloDTO= {
+        cantidad: 0,
+        costoVenta: 0,
+        costoCompra: 0,
+        descripcion: "",
+        nombre: "",
+        perecero: Date,
+        tienda: "",
+        usuario: "",
+      };
+    }
     this.modalService.open(mediumModalContent);
   }
 
@@ -47,7 +72,7 @@ export class ItemsComponent implements OnInit {
       );
     });
     this.getArticulos();
-    this.articulo = {
+    this.articuloDTO = {
       cantidad: 0,
       costoVenta: 0,
       costoCompra: 0,

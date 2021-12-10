@@ -11,48 +11,27 @@ import { Router } from '@angular/router';
 export class AuthGuard implements CanActivate {
   public roles = ""
   public access = false
-  constructor(private usuarioService:UsuariosService, private router:Router){}
+  constructor(private usuarioService:UsuariosService, private router:Router, private tokenService:TokenService){}
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot) {
      const rol1 = route.data['roles'];
   
-  
-
-
     try{
-      this.usuarioService.getUsuarioLogeado().subscribe(usuario => {
-  
-        this.roles = usuario.rol
-
+        this.roles = this.tokenService.getRol()
         if (  this.roles == rol1){
-       
           this.access = true
        
     }else{
- 
       this.router.navigateByUrl('/login');
       this.access = false
-    
-
-    }
-      })
-    
+    }      
     }catch{
       this.router.navigateByUrl('/login');
       return false
-
-    }
-       
+    } 
     return this.access
-    
-    
-
-       
-
-   
   }
  
-
 }

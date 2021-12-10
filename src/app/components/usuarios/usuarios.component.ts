@@ -13,9 +13,9 @@ export class UsuariosComponent implements OnInit {
   usuarios: Usuario[] = [];
 
   roles = [{_id :"6199cc15f67003035d912bb8",nombre:"ADMIN"},{_id:"6199cc15f67003035d912bb7",nombre:"USER"}];
-  usuario: Usuario= { _id:"", username:"", email:"", direccion:"",telefono:"", nombre:"", apellido:"", rol:"",tienda:"", createdAt:"", updatedAt:""};
-  usuarioDTO: CreateUsuarioDTO= {  username:"", email:"",password:"", direccion:"",telefono:"", nombre:"", apellido:"", rol:"",tienda:""};
-  usuariodDTIO:CreatedUsuarioDTO= { _id:"", username:"", email:"", direccion:"",telefono:"", nombre:"", apellido:"", rol:"",tienda:""}
+  usuario: Usuario= { _id:"", username:"", email:"", direccion:"",telefono:"", nombre:"", apellido:"", rol:[],tienda:[], createdAt:"", updatedAt:""};
+  usuarioDTO: CreateUsuarioDTO= {  username:"", email:"",password:"", direccion:"",telefono:"", nombre:"", apellido:"", rol:[],tienda:[]};
+  usuariodDTIO:CreatedUsuarioDTO= { _id:"", username:"", email:"", direccion:"",telefono:"", nombre:"", apellido:"", rol:[],tienda:[]}
   modalTitle = ""
   usuarioTiendaId=""
 
@@ -27,7 +27,6 @@ export class UsuariosComponent implements OnInit {
 
   ngOnInit(): void {
   this.getUsuarios()
-  this.getUserLogeado()
 
   }
   getUsuarios():void{
@@ -35,22 +34,18 @@ export class UsuariosComponent implements OnInit {
     .getUsuarios()
     .subscribe((usuarios) => (this.usuarios = usuarios));
   }
-  getUserLogeado():void{
-   this.usuarioService.getUsuarioLogeado().subscribe(usuario => {
-      this.usuarioTiendaId = usuario.tienda
-    })   
-  }
+
   getNombreTienda(id):void{
 
       this.sucursalService.getSucursal(id).subscribe(tienda => {  
         console.log(tienda.nombre)
-        this.usuarioDTO.tienda = tienda.nombre})
+        this.usuarioDTO.tienda = [tienda.nombre]})
   }
  
   openMediumModal(mediumModalContent,title) {
     this.modalTitle = title;
     if (this.modalTitle == "Crear Usuario"){
-      this.usuarioDTO = {  username:"", email:"",password:"", direccion:"",telefono:"", nombre:"", apellido:"", rol:"",tienda:""}
+      this.usuarioDTO = {  username:"", email:"",password:"", direccion:"",telefono:"", nombre:"", apellido:"", rol:[],tienda:[]}
 
      this.getNombreTienda(this.usuarioTiendaId[0])
       

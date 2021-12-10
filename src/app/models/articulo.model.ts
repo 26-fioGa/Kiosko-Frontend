@@ -9,3 +9,6 @@ export interface Articulo {
   usuario: string;
   tienda: string;
 }
+export interface ArticuloDTO extends Omit<Articulo, '_id'>{
+
+}

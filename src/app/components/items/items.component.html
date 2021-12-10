@@ -1,114 +1,194 @@
 <div class="page-header">
-    <h2 class="page-title">ÍTEMS</h2>
+  <h2 class="page-title">ÍTEMS</h2>
 </div>
 <div class="row">
-    <div class="col-lg-12 grid-margin stretch-card">
-        <div class="card">
-            <div class="card-body">
-                <div class="row justify-content-between pl-3 pr-3">
-                    <h6>Ítems Registrados</h6>
-                    <button type="button" class="btn btn-gradient-success btn-rounded btn-icon" (click)="openMediumModal(mediumModalContent)" title="Crear nuevo usuario">
-                        <i class="mdi mdi-plus"></i>
-                    </button>
-                    <!-- Inicio Modal -->
-                    <ng-template #mediumModalContent let-modal class="modal fade" id="exampleModal-2" aria-labelledby="exampleModalLabel-2">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel-2">
-                                    Artículo
-                                </h5>
-                                <button type="button" class="close" (click)="modal.dismiss()" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form class="forms-sample pl-3 pr-3">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label for="nombre">Nombre</label>
-                                                <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="articulo.nombre" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="descripcion">Descripción</label>
-                                                <input type="text" class="form-control" id="descripcion" name="descripcion" [(ngModel)]="articulo.descripcion" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="cantidad">Cantidad</label>
-                                                <input type="email" class="form-control" id="cantidad" name="cantidad" [(ngModel)]="articulo.cantidad" />
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label for="costoVenta">Costo Venta</label>
-                                                <input type="text" class="form-control" id="costoVenta" name="costoVenta" [(ngModel)]="articulo.costoVenta" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="costoCompra">Costo Compra</label>
-                                                <input type="text" class="form-control" id="costoCompra" name="costoCompra" [(ngModel)]="articulo.costoCompra" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="perecero">Perecero</label>
-                                                <input type="date" class="form-control" id="perecero" name="perecero" [(ngModel)]="articulo.perecero" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-main" *ngIf="articulo._id else elseBlock" (click)="modal.close(); update()">
-                                    Guardar Cambios
-                                </button>
-                                <ng-template #elseBlock>
-                                    <button type="submit" class="btn btn-main" (click)="modal.close(); create()">Crear
-                                        Artículo</button>
-                                </ng-template>
-                                <button type="button" class="btn btn-light" (click)="modal.close()">
-                                    Cancelar
-                                </button>
-                            </div>
-                        </div>
-                    </ng-template>
-                    <!-- Fin Modal -->
-                </div>
-                <hr />
-                <div class="table-responsive">
-                    <table class="table text-center ">
-                        <thead>
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Descripción</th>
-                                <th>Cantidad</th>
-                                <th>Costo Venta</th>
-                                <th>Costo Compra</th>
-                                <th>Perecero</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let articulo of articulos">
-                                <td>{{articulo.nombre}}</td>
-                                <td>{{articulo.descripcion}}</td>
-                                <td>{{articulo.cantidad}}</td>
-                                <td>{{articulo.costoVenta}}</td>
-                                <td>{{articulo.costoCompra}}</td>
-                                <td>{{articulo.perecero}}</td>
-                                <td>
-                                    <div ngbDropdown>
-                                        <button type="button" class="btn btn-link btn-fw btn-rounded btn-icon" id="dropdownMenuIconButton1" ngbDropdownToggle title="Acciones">
-                                            <i class="mdi mdi-dots-vertical"></i>
-                                        </button>
-                                        <div ngbDropdownMenu aria-labelledby="dropdownMenuIconButton1">
-                                            <a class="dropdown-item" (click)="cargarArticulo(articulo._id)" (click)="openMediumModal(mediumModalContent)">Editar</a>
-                                            <a class="dropdown-item" (click)="delete(articulo)">Eliminar</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+  <div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <div class="row justify-content-between pl-3 pr-3">
+          <h6>Ítems Registrados</h6>
+          <button
+            type="button"
+            class="btn btn-gradient-success btn-rounded btn-icon"
+            (click)="openMediumModal(mediumModalContent)"
+            title="Crear nuevo usuario"
+          >
+            <i class="mdi mdi-plus"></i>
+          </button>
+          <!-- Inicio Modal -->
+          <ng-template
+            #mediumModalContent
+            let-modal
+            class="modal fade"
+            id="exampleModal-2"
+            aria-labelledby="exampleModalLabel-2"
+          >
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel-2">Artículo</h5>
+                <button
+                  type="button"
+                  class="close"
+                  (click)="modal.dismiss()"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form class="forms-sample pl-3 pr-3">
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label for="nombre">Nombre</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="nombre"
+                          name="nombre"
+                          [(ngModel)]="articuloDTO.nombre"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label for="descripcion">Descripción</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="descripcion"
+                          name="descripcion"
+                          [(ngModel)]="articuloDTO.descripcion"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label for="cantidad">Cantidad</label>
+                        <input
+                          type="email"
+                          class="form-control"
+                          id="cantidad"
+                          name="cantidad"
+                          [(ngModel)]="articuloDTO.cantidad"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label for="costoVenta">Costo Venta</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="costoVenta"
+                          name="costoVenta"
+                          [(ngModel)]="articuloDTO.costoVenta"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label for="costoCompra">Costo Compra</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="costoCompra"
+                          name="costoCompra"
+                          [(ngModel)]="articuloDTO.costoCompra"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label for="perecero">Perecero</label>
+                        <input
+                          type="date"
+                          class="form-control"
+                          id="perecero"
+                          name="perecero"
+                          [(ngModel)]="articuloDTO.perecero"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-main"
+                  *ngIf="articulo._id; else elseBlock"
+                  (click)="modal.close(); update()"
+                >
+                  Guardar Cambios
+                </button>
+                <ng-template #elseBlock>
+                  <button
+                    type="submit"
+                    class="btn btn-main"
+                    (click)="modal.close(); create()"
+                  >
+                    Crear Artículo
+                  </button>
+                </ng-template>
+                <button
+                  type="button"
+                  class="btn btn-light"
+                  (click)="modal.close()"
+                >
+                  Cancelar
+                </button>
+              </div>
             </div>
+          </ng-template>
+          <!-- Fin Modal -->
         </div>
+        <hr />
+        <div class="table-responsive">
+          <table class="table text-center">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Cantidad</th>
+                <th>Costo Venta</th>
+                <th>Costo Compra</th>
+                <th>Perecero</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let articulo of articulos">
+                <td>{{ articulo.nombre }}</td>
+                <td>{{ articulo.descripcion }}</td>
+                <td>{{ articulo.cantidad }}</td>
+                <td>{{ articulo.costoVenta }}</td>
+                <td>{{ articulo.costoCompra }}</td>
+                <td>{{ articulo.perecero }}</td>
+                <td>
+                  <div ngbDropdown>
+                    <button
+                      type="button"
+                      class="btn btn-link btn-fw btn-rounded btn-icon"
+                      id="dropdownMenuIconButton1"
+                      ngbDropdownToggle
+                      title="Acciones"
+                    >
+                      <i class="mdi mdi-dots-vertical"></i>
+                    </button>
+                    <div
+                      ngbDropdownMenu
+                      aria-labelledby="dropdownMenuIconButton1"
+                    >
+                      <a
+                        class="dropdown-item"
+                        (click)="cargarArticulo(articulo._id)"
+                        (click)="openMediumModal(mediumModalContent)"
+                        >Editar</a
+                      >
+                      <a class="dropdown-item" (click)="delete(articulo)"
+                        >Eliminar</a
+                      >
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
